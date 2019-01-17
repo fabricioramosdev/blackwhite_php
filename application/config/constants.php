@@ -90,8 +90,8 @@ $dev = ($_SERVER['SERVER_NAME'] === 'localhost');
 define('DEV', $dev);
 //========================================= Define o banco de dados do qual deve connectar
 define('HOSTNAME', $dev ? 'localhost' : '######');
-define('DATABASE', $dev ? 'com.lolababy' : '######');
-define('USERNAME', $dev ? 'lolababy' : '######');
-define('PASSWORD', $dev ? 'lolababy***' : '######');
+define('DATABASE', $dev ? '#####' : '######');
+define('USERNAME', $dev ? '##########' : '######');
+define('PASSWORD', $dev ? '#######' : '######');
 //========================================= Define a constante BASEURL
-define('BASEURL', $dev ? 'http://localhost/com.api.lolababy/' : '######');
+define('BASEURL', $dev ? 'http://localhost/bwdev/' : 'http://bwdev.fxdev.com.br/');
