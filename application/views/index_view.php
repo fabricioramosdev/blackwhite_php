@@ -32,7 +32,9 @@ License: You must have a valid license purchased only from https://themes.getboo
 			<div class="k-grid__item k-grid__item--fluid k-grid k-grid--ver k-page">
 
 				<!-- begin:: Aside -->
+            <!-- Menu lateral -->
 		    <?php $this->view('partials/Aside'); ?>
+          <!-- Menu lateral -->
 				<!-- end:: Aside -->
 
 				<div class="k-grid__item k-grid__item--fluid k-grid k-grid--hor k-wrapper" id="k_wrapper">

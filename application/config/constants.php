@@ -90,8 +90,8 @@ $dev = ($_SERVER['SERVER_NAME'] === 'localhost');
 define('DEV', $dev);
 //========================================= Define o banco de dados do qual deve connectar
 define('HOSTNAME', $dev ? 'localhost' : '######');
-define('DATABASE', $dev ? '#####' : '######');
-define('USERNAME', $dev ? '##########' : '######');
-define('PASSWORD', $dev ? '#######' : '######');
+define('DATABASE', $dev ? 'bwdev' : '######');
+define('USERNAME', $dev ? 'root' : '######');
+define('PASSWORD', $dev ? 'pri142407' : '######');
 //========================================= Define a constante BASEURL
 define('BASEURL', $dev ? 'http://localhost/bwdev/' : 'http://bwdev.fxdev.com.br/');

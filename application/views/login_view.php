@@ -103,15 +103,10 @@ License: You must have a valid license purchased only from https://themes.getboo
 					<div class="k-login-v1__head">
 						<div class="k-login-v1__head-logo">
 							<a href="#">
-								<img src="<?php echo base_url(); ?>assets/media/logos/logo-4-lolababy.png" alt="" />
+								<img src="<?php echo base_url(); ?>assets/media/logos/logo-4-bw.png" alt="" />
 							</a>
 						</div>
-						<!--
-						<div class="k-login-v1__head-signup">
-							<h4>Don't have an account?</h4>
-							<a href="#" class="k-link">Sign Up</a>
-						</div>
-					-->
+
 
 					</div>
 
@@ -130,9 +125,7 @@ License: You must have a valid license purchased only from https://themes.getboo
 						<div class="k-login-v1__body-section">
 							<div class="k-login-v1__body-section-info">
 
-								<h3>Lola Baby</h3>
-								<p>SIG - Sistema informação gerencial</p>
-
+								<h3>Black and White Style </h3>
 							</div>
 						</div>
 
@@ -147,16 +140,26 @@ License: You must have a valid license purchased only from https://themes.getboo
 						<div class="k-login-v1__body-wrapper">
 							<div class="k-login-v1__body-container">
 								<h3 class="k-login-v1__body-title">
-									Sign To Account
+									Login de acesso
 								</h3>
 
 								<!--begin::Form-->
-								<form class="k-login-v1__body-form k-form" action="<?php echo base_url(); ?>login/check" method="post" autocomplete="off">
+								<form class="k-form" action="<?php echo base_url(); ?>login/check" method="post" autocomplete="off">
 									<div class="form-group">
-										<input class="form-control" type="email" placeholder="E-mail" name="email" autocomplete="off" value="fabricio@lolababy.com">
+										<input class="form-control" type="email" placeholder="E-mail" name="email" autocomplete="off" value="fabricio@email.com">
 									</div>
 									<div class="form-group">
-										<input class="form-control" type="password" placeholder="Senha" name="senha" autocomplete="off" value="21112018" >
+										<input class="form-control" type="password" placeholder="Senha" name="senha" autocomplete="off" value="123" >
+									</div>
+
+									<div class="form-group">
+										<label>Selecione loja</label>
+										<select class="form-control" name="loja">
+											<option value="">Selecione...</option>
+											<?php foreach ($listalojas as $key => $value): ?>
+												<option value="<?php echo $value['hash'] ?>"><?php echo $value['descricao'] ?></option>
+											<?php endforeach; ?>
+										</select>
 									</div>
 
 								<!--begin::Action-->
@@ -164,7 +167,7 @@ License: You must have a valid license purchased only from https://themes.getboo
 								<!--	<a href="#" class="k-link">
 										<span>Forgot Password ?</span>
 									</a> -->
-									<button type="submit" class="btn btn-pill btn-elevate">Sign In</button>
+									<button type="submit" class="btn btn-pill btn-elevate">Login </button>
 								</div>
 								<!--end::Action-->
 								</form>
@@ -172,11 +175,7 @@ License: You must have a valid license purchased only from https://themes.getboo
 
 								<!--begin::Divider-->
 								<div class="k-login-v1__body-divider">
-									<!--<div class="k-divider">
-										<span></span>
-										<span>OR</span>
-										<span></span>
-									</div>-->
+
 								</div>
 
 								<!--end::Divider-->
@@ -229,237 +228,7 @@ License: You must have a valid license purchased only from https://themes.getboo
 
 		<!-- end:: Page -->
 
-		<!-- begin:: Topbar Offcanvas Panels -->
 
-		<!-- begin::Offcanvas Toolbar Search -->
-		<div id="k_offcanvas_toolbar_search" class="k-offcanvas-panel">
-			<div class="k-offcanvas-panel__head">
-				<h3 class="k-offcanvas-panel__title">
-					Search
-				</h3>
-				<a href="#" class="k-offcanvas-panel__close" id="k_offcanvas_toolbar_search_close"><i class="flaticon2-delete"></i></a>
-			</div>
-			<div class="k-offcanvas-panel__body">
-				<div class="k-search">
-					<div class="k-search__form">
-						<form action="#" method="get">
-							<input type="text" name="query" class="form-control" placeholder="Type here...">
-						</form>
-					</div>
-					<div class="k-search__result">
-						<div class="k-search__section">
-							Documents
-						</div>
-						<div class="k-search__item">
-							<div class="k-search__item-img k-search__item-img--file">
-								<img src="<?php echo base_url(); ?>assets/media/files/doc.svg" alt="" />
-							</div>
-							<div class="k-search__item-wrapper">
-								<a href="#" class="k-search__item-title">
-									AirPlus Requirements
-								</a>
-								<div class="k-search__item-desc">
-									by Grog John
-								</div>
-							</div>
-						</div>
-						<div class="k-search__item">
-							<div class="k-search__item-img k-search__item-img--file">
-								<img src="<?php echo base_url(); ?>assets/media/files/pdf.svg" alt="" />
-							</div>
-							<div class="k-search__item-wrapper">
-								<a href="#" class="k-search__item-title">
-									TechNav Documentation
-								</a>
-								<div class="k-search__item-desc">
-									by Mary Broun
-								</div>
-							</div>
-						</div>
-						<div class="k-search__item">
-							<div class="k-search__item-img k-search__item-img--file">
-								<img src="<?php echo base_url(); ?>assets/media/files/zip.svg" alt="" />
-							</div>
-							<div class="k-search__item-wrapper">
-								<a href="#" class="k-search__item-title">
-									All Framework Docs
-								</a>
-								<div class="k-search__item-desc">
-									by Grog John
-								</div>
-							</div>
-						</div>
-						<div class="k-search__item">
-							<div class="k-search__item-img k-search__item-img--file">
-								<img src="<?php echo base_url(); ?>assets/media/files/xml.svg" alt="" />
-							</div>
-							<div class="k-search__item-wrapper">
-								<a href="#" class="k-search__item-title">
-									AirPlus Requirements
-								</a>
-								<div class="k-search__item-desc">
-									by Grog John
-								</div>
-							</div>
-						</div>
-						<div class="k-search__section">
-							Members
-						</div>
-						<div class="k-search__item">
-							<div class="k-search__item-img">
-								<img src="<?php echo base_url(); ?>assets/media/users/300_14.jpg" alt="" />
-							</div>
-							<div class="k-search__item-wrapper">
-								<a href="#" class="k-search__item-title">
-									Jimmy Curry
-								</a>
-								<div class="k-search__item-desc">
-									Software Developer
-								</div>
-							</div>
-						</div>
-						<div class="k-search__item">
-							<div class="k-search__item-img">
-								<img src="<?php echo base_url(); ?>assets/media/users/300_20.jpg" alt="" />
-							</div>
-							<div class="k-search__item-wrapper">
-								<a href="#" class="k-search__item-title">
-									Milena Gibson
-								</a>
-								<div class="k-search__item-desc">
-									UI Designer
-								</div>
-							</div>
-						</div>
-						<div class="k-search__item">
-							<div class="k-search__item-img">
-								<img src="<?php echo base_url(); ?>assets/media/users/300_21.jpg" alt="" />
-							</div>
-							<div class="k-search__item-wrapper">
-								<a href="#" class="k-search__item-title">
-									Stefan JohnStefan
-								</a>
-								<div class="k-search__item-desc">
-									Marketing Manager
-								</div>
-							</div>
-						</div>
-						<div class="k-search__item">
-							<div class="k-search__item-img">
-								<img src="<?php echo base_url(); ?>assets/media/users/300_2.jpg" alt="" />
-							</div>
-							<div class="k-search__item-wrapper">
-								<a href="#" class="k-search__item-title">
-									Anna Strong
-								</a>
-								<div class="k-search__item-desc">
-									Software Developer
-								</div>
-							</div>
-						</div>
-						<div class="k-search__section">
-							Files
-						</div>
-						<div class="k-search__item">
-							<div class="k-search__item-icon">
-								<i class="flaticon2-box k-font-danger"></i>
-							</div>
-							<div class="k-search__item-wrapper">
-								<a href="#" class="k-search__item-title">
-									2 New items submitted
-								</a>
-								<div class="k-search__item-desc">
-									Marketing Manager
-								</div>
-							</div>
-						</div>
-						<div class="k-search__item">
-							<div class="k-search__item-icon">
-								<i class="flaticon-psd k-font-brand"></i>
-							</div>
-							<div class="k-search__item-wrapper">
-								<a href="#" class="k-search__item-title">
-									79 PSD files generated
-								</a>
-								<div class="k-search__item-desc">
-									by Grog John
-								</div>
-							</div>
-						</div>
-						<div class="k-search__item">
-							<div class="k-search__item-icon">
-								<i class="flaticon2-supermarket k-font-warning"></i>
-							</div>
-							<div class="k-search__item-wrapper">
-								<a href="#" class="k-search__item-title">
-									$2900 worth products sold
-								</a>
-								<div class="k-search__item-desc">
-									Total 234 items
-								</div>
-							</div>
-						</div>
-						<div class="k-search__item">
-							<div class="k-search__item-icon">
-								<i class="flaticon-safe-shield-protection k-font-info"></i>
-							</div>
-							<div class="k-search__item-wrapper">
-								<a href="#" class="k-search__item-title">
-									4 New items submitted
-								</a>
-								<div class="k-search__item-desc">
-									Marketing Manager
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- end::Offcanvas Toolbar Search -->
-
-		<!-- begin::Offcanvas Toolbar Quick Actions -->
-		<div id="k_offcanvas_toolbar_quick_actions" class="k-offcanvas-panel">
-			<div class="k-offcanvas-panel__head">
-				<h3 class="k-offcanvas-panel__title">
-					Quick Actions
-				</h3>
-				<a href="#" class="k-offcanvas-panel__close" id="k_offcanvas_toolbar_quick_actions_close"><i class="flaticon2-delete"></i></a>
-			</div>
-			<div class="k-offcanvas-panel__body">
-				<div class="k-grid-nav-v2">
-					<a href="#" class="k-grid-nav-v2__item">
-						<div class="k-grid-nav-v2__item-icon"><i class="flaticon2-box"></i></div>
-						<div class="k-grid-nav-v2__item-title">Orders</div>
-					</a>
-					<a href="#" class="k-grid-nav-v2__item">
-						<div class="k-grid-nav-v2__item-icon"><i class="flaticon-download-1"></i></div>
-						<div class="k-grid-nav-v2__item-title">Uploades</div>
-					</a>
-					<a href="#" class="k-grid-nav-v2__item">
-						<div class="k-grid-nav-v2__item-icon"><i class="flaticon2-supermarket"></i></div>
-						<div class="k-grid-nav-v2__item-title">Products</div>
-					</a>
-					<a href="#" class="k-grid-nav-v2__item">
-						<div class="k-grid-nav-v2__item-icon"><i class="flaticon2-avatar"></i></div>
-						<div class="k-grid-nav-v2__item-title">Customers</div>
-					</a>
-					<a href="#" class="k-grid-nav-v2__item">
-						<div class="k-grid-nav-v2__item-icon"><i class="flaticon2-list"></i></div>
-						<div class="k-grid-nav-v2__item-title">Blog Posts</div>
-					</a>
-					<a href="#" class="k-grid-nav-v2__item">
-						<div class="k-grid-nav-v2__item-icon"><i class="flaticon2-settings"></i></div>
-						<div class="k-grid-nav-v2__item-title">Settings</div>
-					</a>
-				</div>
-			</div>
-		</div>
-
-		<!-- end::Offcanvas Toolbar Quick Actions -->
-
-		<!-- end:: Topbar Offcanvas Panels -->
 
 		<!-- begin::Global Config -->
 		<script>

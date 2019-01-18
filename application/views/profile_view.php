@@ -62,47 +62,43 @@ License: You must have a valid license purchased only from https://themes.getboo
 													<div class="k-portlet">
 														<div class="k-portlet__head">
 															<div class="k-portlet__head-label">
-																<h3 class="k-portlet__head-title">Informação pessoal <small>atualize suas informações pessoais</small></h3>
+																<h3 class="k-portlet__head-title">Informação pessoais</h3>
 															</div>
 
 														</div>
-														<form class="k-form k-form--label-right">
+														<form class="k-form k-form--label-right" action="<?php echo base_url() ?>Profile/post" method="post" enctype="multipart/form-data">
 															<div class="k-portlet__body">
 																<div class="k-section k-section--first">
 																	<div class="k-section__body">
-																		<div class="row">
-																			<label class="col-xl-3"></label>
-																			<div class="col-lg-9 col-xl-6">
-																				<h3 class="k-section__title k-section__title-sm">Info:</h3>
-																			</div>
-																		</div>
-																		<div class="form-group row">
-																			<label class="col-xl-3 col-lg-3 col-form-label">Avatar</label>
-																			<div class="col-lg-9 col-xl-6">
-																				<div class="k-avatar k-avatar--outline k-avatar--circle" id="k_profile_avatar">
-																					<div class="k-avatar__holder" style="background-image: url(<?php echo base_url(); ?>assets/media/users/<?php echo  $this->session->usuario[0]['avatar']; ?>)"></div>
-																					<label class="k-avatar__upload" data-toggle="k-tooltip" title="" data-original-title="Change avatar">
-																						<i class="fa fa-pen"></i>
-																						<input type="file" name="profile_avatar" accept=".png, .jpg, .jpeg">
-																					</label>
-																					<span class="k-avatar__cancel" data-toggle="k-tooltip" title="" data-original-title="Cancel avatar">
-																						<i class="fa fa-times"></i>
-																					</span>
-																				</div>
-																			</div>
-																		</div>
+																		<div class="row"><label class="col-xl-3"></label></div>
+
+  																	<!-- <div class="form-group row">
+  																		<label class="col-xl-3 col-lg-3 col-form-label">Avatar</label>
+  																		<div class="col-lg-9 col-xl-6">
+  																			<div class="k-avatar k-avatar--outline k-avatar--circle" id="k_profile_avatar">
+  																				<div class="k-avatar__holder" style="background-image: url(<?php //echo base_url(); ?>assets/media/users/<?php echo  $this->session->usuario[0]['avatar']; ?>)"></div>
+  																				<label class="k-avatar__upload" data-toggle="k-tooltip" title="" data-original-title="Change avatar">
+  																					<i class="fa fa-pen"></i>
+  																					<input type="file" name="avatar" value="" accept=".png, .jpg, .jpeg">
+  																				</label>
+  																				<span class="k-avatar__cancel" data-toggle="k-tooltip" title="" data-original-title="Cancel avatar">
+  																					<i class="fa fa-times"></i>
+  																				</span>
+  																			</div>
+  																		</div>
+  																	</div> -->
 
 
 																		<div class="form-group row">
 																			<label class="col-xl-3 col-lg-3 col-form-label">Nome</label>
 																			<div class="col-lg-9 col-xl-6">
-																				<input class="form-control" type="text" name="nome" value="" autocomplete="off">
+																				<input class="form-control" type="text" name="nome" value="<?php echo  $this->session->usuario[0]['nome']; ?>" autocomplete="off">
 																			</div>
 																		</div>
 																		<div class="form-group row">
 																			<label class="col-xl-3 col-lg-3 col-form-label">E-mail</label>
 																			<div class="col-lg-9 col-xl-6">
-																				<input class="form-control" type="email" name="email" value="" autocomplete="off">
+																				<input class="form-control" type="email" name="email" value="<?php echo  $this->session->usuario[0]['email']; ?>" autocomplete="off">
 																			</div>
 																		</div>
 																		<div class="form-group row">
@@ -123,6 +119,8 @@ License: You must have a valid license purchased only from https://themes.getboo
 																		<div class="col-lg-9 col-xl-9">
 																			<button type="submit" class="btn btn-success">Salvar</button>&nbsp;
 																			<button type="reset" class="btn btn-secondary">Cancelar</button>
+
+                                      	<input class="form-control" type="hidden" name="id" value="<?php echo  $this->session->usuario[0]['id']; ?>">
 																		</div>
 																	</div>
 																</div>
@@ -133,7 +131,7 @@ License: You must have a valid license purchased only from https://themes.getboo
 
 												<!--end: Personal Information-->
 
-								>
+
 											</div>
 										</div>
 							</div>
