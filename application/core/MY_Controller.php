@@ -18,8 +18,6 @@ class MY_Controller extends CI_Controller {
             redirect(base_url());
         } else {
 
-
-
           $this->data['title'] = 'black white | ';
 
           $controller = $this->router->class;
@@ -33,17 +31,44 @@ class MY_Controller extends CI_Controller {
            //============================================ verifica as rotas e se o usuário possi acesso a elas
         	$this->load->model("Routes_model");
           $rs =  $this->Routes_model->check($check_routes);
+
+
           if(empty($rs)){
+
           		$this->session->set_flashdata('notfy', array(
       					'type'  => "info",
       					'title' => "Sem acesso ! ",
       					'msg' => ":( - Você não possui acesso a esta funcionalidade !"
       				));
+
+              if($this->session->usuario[0]['idperfil'] == '1'){
+                //===================================  cadastra nova Routes
+                // =================================== libera acesso para o root
+                $this->cadastraRouteLiberaRoot($check_routes);
+
+                $this->session->set_flashdata('notfy', array(
+                  'type'  => "info",
+                  'title' => "Acesso liberado ! ",
+                  'msg' => ":) -Sr° Root seja bem vindo!"
+                ));
+
+
+
+              }
+
       				redirect($this->agent->referrer());
            }
 
 
         }
     }
+
+    //===================================  cadastra nova Routes
+    // =================================== libera acesso para o root
+    private function cadastraRouteLiberaRoot($data){
+      $this->load->model('Routes_model');
+      $this->Routes_model->RouteLiberaRoot($data);
+    }
+
 
 }

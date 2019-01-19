@@ -15,4 +15,16 @@ class Loja_model extends MY_Model {
      FROM loja WHERE status = 1;")->result_array();
           return $result;
     }
+
+    public function acessoloja($data){
+        // limpa todos os acessos do usuário
+        $this->db->where('usuario', $data[0]['usuario']);
+        $result = $this->db->delete('usuario_acessa_loja');
+
+        // insere novamente os novos acesso
+        $result = $this->db->insert_batch('usuario_acessa_loja', $data);
+        return $result;
+    }
+
+
 }

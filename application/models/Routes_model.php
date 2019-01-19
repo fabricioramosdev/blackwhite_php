@@ -20,5 +20,26 @@ class Routes_model extends MY_Model {
       return $result;
     }
 
+    public function RouteLiberaRoot($data){
+
+
+      $result = $this->db->insert($this->table, array("controller"=> $data['controller'],
+      "method"=>$data['method'],
+      "aside"=> 0));
+
+      if($result){
+        $routes = $this->db->insert_id();
+
+        $result = $this->db->insert('perfil_acessa_routes', array(
+          "perfil"=> $data['perfil'],
+          "routes"=>$routes));
+      }
+
+      return $result;
+
+
+    }
+
+
 
 }

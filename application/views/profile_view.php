@@ -66,30 +66,15 @@ License: You must have a valid license purchased only from https://themes.getboo
 															</div>
 
 														</div>
+
+                           <div class="k-portlet__body">
 														<form class="k-form k-form--label-right" action="<?php echo base_url() ?>Profile/post" method="post" enctype="multipart/form-data">
 															<div class="k-portlet__body">
 																<div class="k-section k-section--first">
 																	<div class="k-section__body">
 																		<div class="row"><label class="col-xl-3"></label></div>
 
-  																	<!-- <div class="form-group row">
-  																		<label class="col-xl-3 col-lg-3 col-form-label">Avatar</label>
-  																		<div class="col-lg-9 col-xl-6">
-  																			<div class="k-avatar k-avatar--outline k-avatar--circle" id="k_profile_avatar">
-  																				<div class="k-avatar__holder" style="background-image: url(<?php //echo base_url(); ?>assets/media/users/<?php echo  $this->session->usuario[0]['avatar']; ?>)"></div>
-  																				<label class="k-avatar__upload" data-toggle="k-tooltip" title="" data-original-title="Change avatar">
-  																					<i class="fa fa-pen"></i>
-  																					<input type="file" name="avatar" value="" accept=".png, .jpg, .jpeg">
-  																				</label>
-  																				<span class="k-avatar__cancel" data-toggle="k-tooltip" title="" data-original-title="Cancel avatar">
-  																					<i class="fa fa-times"></i>
-  																				</span>
-  																			</div>
-  																		</div>
-  																	</div> -->
-
-
-																		<div class="form-group row">
+  																<div class="form-group row">
 																			<label class="col-xl-3 col-lg-3 col-form-label">Nome</label>
 																			<div class="col-lg-9 col-xl-6">
 																				<input class="form-control" type="text" name="nome" value="<?php echo  $this->session->usuario[0]['nome']; ?>" autocomplete="off">
@@ -126,6 +111,7 @@ License: You must have a valid license purchased only from https://themes.getboo
 																</div>
 															</div>
 														</form>
+                          </div>
 													</div>
 												</div>
 

@@ -19,9 +19,12 @@
 
   <!--end::Web font -->
 
+
+
+
   <!--begin::Page Vendors Styles -->
   <link href="<?php echo base_url(); ?>assets/vendors/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
-
+  <link href="<?php echo base_url() ?>assets/vendors/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
   <!--end::Page Vendors Styles -->
 
   <!--begin:: Global Mandatory Vendors -->
@@ -65,6 +68,7 @@
   <script src="<?php echo base_url(); ?>assets/app/scripts/custom/dashboard.js" type="text/javascript"></script>
   <script src="<?php echo base_url(); ?>assets/demo/default/custom/custom/profile/profile.js" type="text/javascript"></script>
 
+
   <!--end::Page Scripts -->
 
 
@@ -76,5 +80,10 @@
 
   <!--end::Layout Skins -->
   <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/media/logos/favicon.ico" />
+
+  <script type="text/javascript">
+    var app_u = '<?php echo base_url(); ?>';
+  </script>
+
 </head>
 <!-- end::Head -->

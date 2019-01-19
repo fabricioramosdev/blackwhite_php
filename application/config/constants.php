@@ -89,9 +89,9 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 $dev = ($_SERVER['SERVER_NAME'] === 'localhost');
 define('DEV', $dev);
 //========================================= Define o banco de dados do qual deve connectar
-define('HOSTNAME', $dev ? 'localhost' : '######');
-define('DATABASE', $dev ? 'bwdev' : '######');
-define('USERNAME', $dev ? 'root' : '######');
-define('PASSWORD', $dev ? 'pri142407' : '######');
+define('HOSTNAME', $dev ? 'localhost' : 'localhost');
+define('DATABASE', $dev ? 'bwdev' : 'bwdev');
+define('USERNAME', $dev ? 'root' : 'root');
+define('PASSWORD', $dev ? 'pri142407' :'pri142407');
 //========================================= Define a constante BASEURL
-define('BASEURL', $dev ? 'http://localhost/bwdev/' : 'http://bwdev.fxdev.com.br/');
+define('BASEURL', $dev ? 'http://localhost/bwdev/' : 'http://192.168.1.102/bwdev/');

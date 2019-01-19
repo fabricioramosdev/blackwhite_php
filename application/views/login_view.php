@@ -146,19 +146,23 @@ License: You must have a valid license purchased only from https://themes.getboo
 								<!--begin::Form-->
 								<form class="k-form" action="<?php echo base_url(); ?>login/check" method="post" autocomplete="off">
 									<div class="form-group">
-										<input class="form-control" type="email" placeholder="E-mail" name="email" autocomplete="off" value="fabricio@email.com">
+										<input class="form-control" type="email" placeholder="E-mail" name="email" autocomplete="off" value="<?php echo set_value('email'); ?>">
 									</div>
 									<div class="form-group">
-										<input class="form-control" type="password" placeholder="Senha" name="senha" autocomplete="off" value="123" >
+										<input class="form-control" type="password" placeholder="Senha" name="senha" autocomplete="off" value="<?php echo set_value('senha'); ?>" >
 									</div>
 
 									<div class="form-group">
 										<label>Selecione loja</label>
 										<select class="form-control" name="loja">
 											<option value="">Selecione...</option>
-											<?php foreach ($listalojas as $key => $value): ?>
-												<option value="<?php echo $value['hash'] ?>"><?php echo $value['descricao'] ?></option>
-											<?php endforeach; ?>
+											<?php foreach ($listalojas as $key => $value):
+												 ?>
+
+												<option  value="<?php echo $value['hash'] ?>"><?php echo $value['descricao'] ?></option>
+											<?php
+											
+										 endforeach; ?>
 										</select>
 									</div>
 
