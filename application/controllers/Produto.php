@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Cliente extends MY_Controller {
+class Produto extends MY_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		$this->data['subTitle'] = 'Cliente';
-		$this->load->library('form_validation');
-		$this->load->model('Cliente_model');
+		$this->data['subTitle'] = 'Produto';
+	  $this->load->library('form_validation');
+		$this->load->model('Produto_model');
 		$this->load->helper('html_util_helper');
 		$this->load->helper('date_helper');
 	}
@@ -14,15 +14,15 @@ class Cliente extends MY_Controller {
 	public function index()
 	{
 
-		$this->data['listaclientes'] = $this->Cliente_model->listaCliente();
-		$this->load->view('cliente/index_view',$this->data);
+		$this->data['listaprodutos'] = $this->Produto_model->listaProduto();
+		$this->load->view('produto/index_view',$this->data);
 	}
 
 
 	public function add()
 	{
 
-		$this->load->view('cliente/add_view',$this->data);
+		$this->load->view('produto/add_view',$this->data);
 
 	}
 
@@ -44,43 +44,33 @@ class Cliente extends MY_Controller {
 
 		}else{
 
-
-			if(substr($form['telOut'],-1) == "_"){
-				$form['telOut'] = substr($form['telOut'],0,-1);
-			}
-
-			if(	$form['datanasc'] != ""){
-				$form['datanasc'] = 	parseDate($form['datanasc']);
-			}else{
-					$form['datanasc'] =  NULL;
-			}
-
-			$this->Cliente_model->post($form);
+			$form['estoque_now'] = $form['estoque_ini'];
+			$this->Produto_model->post($form);
 
 			$this->session->set_flashdata('notfy',array(
 				'type'  => "success",
 				'title' => "Sucesso !!",
-				'msg' => ":) - Cliente salvo com sucesso!"
+				'msg' => ":) - Produto salvo com sucesso!"
 			));
 
 
+
 		}
-		redirect(base_url('Cliente/index'));
+		redirect(base_url('Produto/index'));
 
 	}
 
 
 	public function edit($id){
 
-		$this->data['cliente'] = $this->Cliente_model->listaCliente($id);
-		$this->load->view('cliente/edit_view',$this->data);
+		$this->data['produto'] = $this->Produto_model->listaProduto($id);
+		$this->load->view('produto/edit_view',$this->data);
 
 	}
 
 	public function put(){
 
 		$form =  $this->input->post();
-
 		$this->setRegras();
 		if ($this->form_validation->run() == FALSE)
 		{
@@ -97,27 +87,17 @@ class Cliente extends MY_Controller {
 			if (!isset($form['status']))
 			$form['status'] = "0";
 
-			if(substr($form['telOut'],-1) == "_"){
-				$form['telOut'] = substr($form['telOut'],0,-1);
-			}
-
-			if(	$form['datanasc'] != ""){
-				$form['datanasc'] = 	parseDate($form['datanasc']);
-			}else{
-					$form['datanasc'] =  NULL;
-			}
-
-
-			$this->Cliente_model->put($form);
+			$this->Produto_model->put($form);
 			$this->session->set_flashdata('notfy',array(
 				'type'  => "success",
 				'title' => "Sucesso !!",
-				'msg' => ":) - Cliente editado com sucesso!"
+				'msg' => ":) - Produto editado com sucesso!"
 			));
 
 		}
 
-		redirect(base_url('Cliente/index'));
+
+		redirect(base_url('Produto/index'));
 	}
 
 
@@ -127,9 +107,9 @@ class Cliente extends MY_Controller {
 		$this->session->set_flashdata('notfy',array(
 			'type'  => "success",
 			'title' => "Sucesso !!",
-			'msg' => ":) - Cliente deletado com sucesso!"
+			'msg' => ":) - Produto deletado com sucesso!"
 		));
-		echo json_encode($this->Cliente_model->delete($form['id']));
+		echo json_encode($this->Produto_model->delete($form['id']));
 
 	}
 
@@ -143,9 +123,9 @@ class Cliente extends MY_Controller {
 
 	//=========================== setRegras de validação do fomulario
 	private function setRegras() {
-		$this->form_validation->set_rules('nome', 'Nome', 'required');
-		$this->form_validation->set_rules('cpf', 'CPF', 'required');
-
+		$this->form_validation->set_rules('descricao', 'Descrição', 'required');
+		$this->form_validation->set_rules('preco_venda', 'Preço Venda', 'required');
+		$this->form_validation->set_rules('estoque_ini', 'Estoque inicial', 'required');
 	}
 	//=================================================================
 

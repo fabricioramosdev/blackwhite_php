@@ -16,7 +16,7 @@
     <div class="k-header__topbar-item k-header__topbar-item--user">
       <div class="k-header__topbar-wrapper" data-toggle="dropdown" data-offset="10px -2px">
         <div class="k-header__topbar-user">
-          <span class="k-header__topbar-welcome k-hidden-mobile">Hello!, </span>
+          <span class="k-header__topbar-welcome k-hidden-mobile">Olá!, </span>
           <span class="k-header__topbar-username k-hidden-mobile"><?php echo  $this->session->usuario[0]['nome']; ?></span>
           <img alt="Pic" src="<?php echo base_url(); ?>assets/media/users/<?php echo  $this->session->usuario[0]['avatar']; ?>" />
 
@@ -49,7 +49,7 @@
             </a>
           </li>
           <li class="k-nav__item k-nav__item--custom k-margin-t-15">
-            <a href="<?php echo base_url() ?>LogOut" class="btn btn-outline-metal btn-hover-brand btn-upper btn-font-dark btn-sm btn-bold">Log Out</a>
+            <a href="<?php echo base_url() ?>LogOut" class="btn btn-outline-metal btn-hover-brand btn-upper btn-font-dark btn-sm btn-bold">Sair</a>
           </li>
         </ul>
       </div>

@@ -62,7 +62,7 @@ License: You must have a valid license purchased only from https://themes.getboo
 													<div class="k-portlet">
 														<div class="k-portlet__head">
 															<div class="k-portlet__head-label">
-																<h3 class="k-portlet__head-title">Adicionar cliente</h3>
+																<h3 class="k-portlet__head-title">Adicionar produto</h3>
 															</div>
 
 
@@ -72,105 +72,79 @@ License: You must have a valid license purchased only from https://themes.getboo
 
                             <!-- ================================================= -->
                             <div class="row" style="margin-bottom:15px">
-                              <div class="col-sm col-md"><a href="<?php echo base_url(); ?>Cliente/index" class="btn btn-focus btn-wide">Voltar</a></div>
+                              <div class="col-sm col-md"><a href="<?php echo base_url(); ?>Produto/index" class="btn btn-focus btn-wide">Voltar</a></div>
                             </div>
                             <!-- ================================================= -->
 
                             <!-- ================================================= -->
-                            <form class="k-form k-form--label-right" action="<?php echo base_url() ?>Cliente/post" method="post">
+                            <form class="k-form k-form--label-right" action="<?php echo base_url() ?>Produto/post" method="post">
                               <div class="k-portlet__body">
                                 <div class="k-section k-section--first">
                                   <div class="k-section__body">
 
-
-                                  <div class="form-group row">
-                                      <label class="col-xl-3 col-lg-3 col-form-label">Nome (*)</label>
-                                      <div class="col-lg-9 col-xl-6">
-                                        <input class="form-control" type="text" name="nome" value="" autocomplete="off" required>
-                                        <span class="form-text text-muted">Nome completo</span>
-                                      </div>
-                                  </div>
+                                  <!-- id, descricao, detalhe, preco_venda, preco_custo, estoque_ini, estoque_now, estoque_min, status, registro -->
 
                                     <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 col-form-label">CPF (*)</label>
+                                        <label class="col-xl-3 col-lg-3 col-form-label">Descrição (*)</label>
                                         <div class="col-lg-9 col-xl-6">
-                                          <input class="form-control" type="number" name="cpf" value="" autocomplete="off" required>
-                                          <span class="form-text text-muted">CPF somente números</span>
+                                          <input class="form-control" type="text" name="descricao" value="" autocomplete="off" required>
+                                          <span class="form-text text-muted">Descrição do produto Ex. Camiseta, bermuda, boné</span>
                                         </div>
                                     </div>
 
-
                                     <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 col-form-label">Tel. Cel</label>
+                                        <label class="col-xl-3 col-lg-3 col-form-label">Detalhes</label>
                                         <div class="col-lg-9 col-xl-6">
-                                          <input class="form-control" type="text" name="telCel"  value="" autocomplete="off">
-                                          <span class="form-text text-muted">Telefone Celular</span>
+                                          <textarea class="form-control" name="detalhe" rows="4"></textarea>
+                                          <span class="form-text text-muted">Detalhes do produto. Ex. Cor, tamanhos, fornecedores, etc</span>
                                         </div>
                                     </div>
 
+
                                     <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 col-form-label">Tel. Out</label>
+                                        <label class="col-xl-3 col-lg-3 col-form-label">R$ venda (*)</label>
                                         <div class="col-lg-9 col-xl-6">
-                                          <input class="form-control" type="text" name="telOut" value="" autocomplete="off">
-                                          <span class="form-text text-muted">Telefone Residencial ou de Recado</span>
+
+                                        <div class="input-group">
+                                          <div class="input-group-prepend">
+                                            <span class="input-group-text">R$</span>
+                                          </div>
+                                          <input type="number" step="any"  min="0.00" class="form-control" name="preco_venda" aria-label="">
+                                        </div>
+
+
+                                          <span class="form-text text-muted">Preço de venda</span>
                                         </div>
                                     </div>
 
 
                                     <div class="form-group row">
-                                      <label class="col-xl-3 col-lg-3 col-form-label">E-mail</label>
-                                      <div class="col-lg-9 col-xl-6">
-                                        <input class="form-control" type="email" name="email" value="" autocomplete="off">
-                                        <span class="form-text text-muted">E-mail do cliente</span>
-                                      </div>
-                                    </div>
+                                        <label class="col-xl-3 col-lg-3 col-form-label">R$ custo</label>
+                                        <div class="col-lg-9 col-xl-6">
 
-                                    <div class="form-group row">
-                                      <label class="col-xl-3 col-lg-3 col-form-label">Data Nasc.</label>
-                                      <div class="col-lg-6 col-xl-3">
-                                          <input class="form-control" type="text"  name="datanasc" value="" autocomplete="off">
-                                        <span class="form-text text-muted">Data Nascimento</span>
-                                      </div>
-
-                                      <div class="col-lg-3 col-xl-3">
-                                        <select class="form-control" name="sexo">
-                                          <option value="">Selecione ...</option>
-                                          <?php foreach (sexo() as $key => $value): ?>
-                                            <option value="<?php echo $key ?>"><?php echo $value ?></option>
-                                          <?php endforeach; ?>
-        																</select>
-                                        <span class="form-text text-muted">Sexo</span>
-                                      </div>
+                                          <div class="input-group">
+                                            <div class="input-group-prepend">
+                                              <span class="input-group-text">R$</span>
+                                            </div>
+                                            <input type="number" step="any"  min="0.00" class="form-control" name="preco_custo" aria-label="">
+                                          </div>
+                                          <span class="form-text text-muted">Preço de custo</span>
+                                        </div>
                                     </div>
 
 
                                     <div class="form-group row">
-                                      <label class="col-xl-3 col-lg-3 col-form-label">Endereço</label>
-                                      <div class="col-lg-9 col-xl-6">
-                                        <textarea class="form-control" name="endereco" rows="6"></textarea>
-                                        <span class="form-text text-muted">Endereço Completo</span>
-
-                                        <div class="k-checkbox-inline">
-                                          <label class="k-checkbox">
-                                            <input type="checkbox" id="aplicaMascaraEndereco">Máscara
-                                            <span></span>
-                                          </label>
+                                        <label class="col-xl-3 col-lg-3 col-form-label">Estoque (*)</label>
+                                        <div class="col-lg-3 col-xl-3">
+                                          <input class="form-control" type="number" name="estoque_ini" value="" autocomplete="off" required>
+                                          <span class="form-text text-muted">Estoque inicial (*)</span>
                                         </div>
 
-                                      </div>
-
-
+                                        <div class="col-lg-3 col-xl-3">
+                                          <input class="form-control" type="number" name="estoque_min" value="" autocomplete="off">
+                                          <span class="form-text text-muted">Estoque mínimo</span>
+                                        </div>
                                     </div>
-
-
-                                    <div class="form-group row">
-                                      <label class="col-xl-3 col-lg-3 col-form-label">Obs.</label>
-                                      <div class="col-lg-9 col-xl-6">
-                                        <textarea class="form-control" name="observacao" rows="4"></textarea>
-                                        <span class="form-text text-muted">Obervações diversas do cliente</span>
-                                      </div>
-                                    </div>
-
 
 
                                   </div>
@@ -190,13 +164,6 @@ License: You must have a valid license purchased only from https://themes.getboo
                                 </div>
                               </div>
                             </form>
-
-
-
-
-
-
-
 
                             <!-- ================================================= -->
                            </div>
@@ -271,33 +238,11 @@ License: You must have a valid license purchased only from https://themes.getboo
       <?php $this->view('partials/Scripts'); ?>
     <!-- end::Scripts -->
 
+
+
     <!-- ============================= Script custom da pagina ========================== -->
     <script type="text/javascript">
 
-      $( "#aplicaMascaraEndereco" ).change(function() {
-
-        if (this.checked) {
-          $('textarea[name="endereco"]').val(`Logradouro: , N°:\nBairro: \nCidade: Botucatu\nComplemento:\nEstado: SP\nCEP:`);
-        } else {
-          $('textarea[name="endereco"]').val('');
-        }
-      });
-
-
-      // phone number format
-      $('input[name="telCel"]').inputmask("mask", {
-          "mask": "(99) 99999-9999"
-      });
-
-      $('input[name="telOut"]').inputmask("mask", {
-          "mask": "(99)999999999"
-      });
-
-
-
-      $('input[name="datanasc"]').inputmask("dd/mm/yyyy", {
-          autoUnmask: true
-      });
 
     </script>
         <!-- ============================= Script custom da pagina ========================== -->

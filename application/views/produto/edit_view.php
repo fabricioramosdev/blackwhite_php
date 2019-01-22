@@ -62,7 +62,7 @@ License: You must have a valid license purchased only from https://themes.getboo
 													<div class="k-portlet">
 														<div class="k-portlet__head">
 															<div class="k-portlet__head-label">
-																<h3 class="k-portlet__head-title">Editar usuário</h3>
+																<h3 class="k-portlet__head-title">Editar produto</h3>
 															</div>
 
 
@@ -72,106 +72,79 @@ License: You must have a valid license purchased only from https://themes.getboo
 
                             <!-- ================================================= -->
                             <div class="row" style="margin-bottom:15px">
-                              <div class="col-sm col-md"><a href="<?php echo base_url(); ?>Cliente/index" class="btn btn-focus btn-wide">Voltar</a></div>
+                              <div class="col-sm col-md"><a href="<?php echo base_url(); ?>Produto/index" class="btn btn-focus btn-wide">Voltar</a></div>
                             </div>
                             <!-- ================================================= -->
 
                             <!-- ================================================= -->
-                            <form class="k-form k-form--label-right" action="<?php echo base_url() ?>Cliente/put" method="post">
+
+                            <form class="k-form k-form--label-right" action="<?php echo base_url() ?>Produto/put" method="post">
                               <div class="k-portlet__body">
                                 <div class="k-section k-section--first">
                                   <div class="k-section__body">
 
-                                  <div class="form-group row">
-                                      <label class="col-xl-3 col-lg-3 col-form-label">Nome (*)</label>
-                                      <div class="col-lg-9 col-xl-6">
-                                        <input class="form-control" type="text" name="nome" value="<?php echo $cliente[0]['nome'] ?>" autocomplete="off" required>
-                                        <span class="form-text text-muted">Nome completo</span>
-                                      </div>
-                                  </div>
+                                  <!-- id, descricao, detalhe, preco_venda, preco_custo, estoque_ini, estoque_now, estoque_min, status, registro -->
 
                                     <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 col-form-label">CPF (*)</label>
+                                        <label class="col-xl-3 col-lg-3 col-form-label">Descrição (*)</label>
                                         <div class="col-lg-9 col-xl-6">
-                                          <input class="form-control" type="number" name="cpf" value="<?php echo $cliente[0]['cpf'] ?>" autocomplete="off" required>
-                                          <span class="form-text text-muted">CPF somente números</span>
+                                          <input class="form-control" type="text" name="descricao" value="<?php echo $produto[0]['descricao'] ?>" autocomplete="off" required>
+                                          <span class="form-text text-muted">Descrição do produto Ex. Camiseta, bermuda, boné</span>
                                         </div>
                                     </div>
 
-
                                     <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 col-form-label">Tel. Cel</label>
+                                        <label class="col-xl-3 col-lg-3 col-form-label">Detalhes</label>
                                         <div class="col-lg-9 col-xl-6">
-                                          <input class="form-control" type="text" name="telCel"  value="<?php echo $cliente[0]['telCel'] ?>" autocomplete="off">
-                                          <span class="form-text text-muted">Telefone Celular</span>
+                                          <textarea class="form-control" name="detalhe" rows="4"><?php echo $produto[0]['detalhe'] ?></textarea>
+                                          <span class="form-text text-muted">Detalhes do produto. Ex. Cor, tamanhos, fornecedores, etc</span>
                                         </div>
                                     </div>
 
+
                                     <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 col-form-label">Tel. Out</label>
+                                        <label class="col-xl-3 col-lg-3 col-form-label">R$ venda (*)</label>
                                         <div class="col-lg-9 col-xl-6">
-                                          <input class="form-control" type="text" name="telOut" value="<?php echo $cliente[0]['telOut'] ?>" autocomplete="off">
-                                          <span class="form-text text-muted">Telefone Residencial ou de Recado</span>
+
+                                        <div class="input-group">
+                                          <div class="input-group-prepend">
+                                            <span class="input-group-text">R$</span>
+                                          </div>
+                                          <input type="number" step="any"  min="0.00" class="form-control" name="preco_venda" value="<?php echo $produto[0]['preco_venda'] ?>">
+                                        </div>
+
+
+                                          <span class="form-text text-muted">Preço de venda</span>
                                         </div>
                                     </div>
 
 
                                     <div class="form-group row">
-                                      <label class="col-xl-3 col-lg-3 col-form-label">E-mail</label>
-                                      <div class="col-lg-9 col-xl-6">
-                                        <input class="form-control" type="email" name="email" value="<?php echo $cliente[0]['email'] ?>" autocomplete="off">
-                                        <span class="form-text text-muted">E-mail do cliente</span>
-                                      </div>
-                                    </div>
+                                        <label class="col-xl-3 col-lg-3 col-form-label">R$ custo</label>
+                                        <div class="col-lg-9 col-xl-6">
 
-                                    <div class="form-group row">
-                                      <label class="col-xl-3 col-lg-3 col-form-label">Data Nasc.</label>
-                                      <div class="col-lg-6 col-xl-3">
-                                          <input class="form-control" type="text"  name="datanasc" value="<?php echo $cliente[0]['datanasc']; ?>" autocomplete="off">
-                                        <span class="form-text text-muted">Data Nascimento</span>
-                                      </div>
-
-                                      <div class="col-lg-3 col-xl-3">
-                                        <select class="form-control" name="sexo">
-                                          <option value="">Selecione ...</option>
-                                          <?php foreach (sexo() as $key => $value):
-                                             $selected = '';
-                                            if($key == $cliente[0]['sexo'])
-                                               $selected = 'selected';
-                                             ?>
-                                            <option <?php echo $selected; ?>  value="<?php echo $key ?>"><?php echo $value ?></option>
-                                          <?php endforeach; ?>
-        																</select>
-                                        <span class="form-text text-muted">Sexo</span>
-                                      </div>
+                                          <div class="input-group">
+                                            <div class="input-group-prepend">
+                                              <span class="input-group-text">R$</span>
+                                            </div>
+                                            <input type="number" step="any"  min="0.00" class="form-control" name="preco_custo" value="<?php echo $produto[0]['preco_custo'] ?>">
+                                          </div>
+                                          <span class="form-text text-muted">Preço de custo</span>
+                                        </div>
                                     </div>
 
 
                                     <div class="form-group row">
-                                      <label class="col-xl-3 col-lg-3 col-form-label">Endereço</label>
-                                      <div class="col-lg-9 col-xl-6">
-                                        <textarea class="form-control" name="endereco" rows="6"><?php echo $cliente[0]['endereco'] ?></textarea>
-                                        <span class="form-text text-muted">Endereço Completo</span>
-
-                                        <div class="k-checkbox-inline">
-                                          <label class="k-checkbox">
-                                            <input type="checkbox" id="aplicaMascaraEndereco">Máscara
-                                            <span></span>
-                                          </label>
+                                        <label class="col-xl-3 col-lg-3 col-form-label">Estoque (*)</label>
+                                        <div class="col-lg-3 col-xl-3">
+                                          <input class="form-control" type="number" name="estoque_ini" value="<?php echo $produto[0]['estoque_ini'] ?>" autocomplete="off" required>
+                                          <span class="form-text text-muted">Estoque inicial (*)</span>
                                         </div>
 
-                                      </div>
-
-
-                                    </div>
-
-
-                                    <div class="form-group row">
-                                      <label class="col-xl-3 col-lg-3 col-form-label">Obs.</label>
-                                      <div class="col-lg-9 col-xl-6">
-                                        <textarea class="form-control" name="observacao" rows="4"><?php echo $cliente[0]['observacao'] ?></textarea>
-                                        <span class="form-text text-muted">Obervações diversas do cliente</span>
-                                      </div>
+                                        <div class="col-lg-3 col-xl-3">
+                                          <input class="form-control" type="number" name="estoque_min" value="<?php echo $produto[0]['estoque_min'] ?>" autocomplete="off">
+                                          <span class="form-text text-muted">Estoque mínimo</span>
+                                        </div>
                                     </div>
 
 
@@ -182,7 +155,7 @@ License: You must have a valid license purchased only from https://themes.getboo
                                         <span class="k-switch k-switch--icon k-switch--lg k-switch--accent">
                                           <label>
                                             <?php
-                                            if($cliente[0]['status'] == 1){ ?>
+                                            if($produto[0]['status'] == 1){ ?>
                                               <input type="checkbox" checked="checked" name="status" value="1">
                                             <?php }else{ ?>
                                               <input type="checkbox" name="status" value="1">
@@ -195,7 +168,6 @@ License: You must have a valid license purchased only from https://themes.getboo
                                     </div>
 
 
-
                                   </div>
                                 </div>
                                 <div class="k-separator k-separator--border-dashed k-separator--portlet-fit k-separator--space-lg"></div>
@@ -206,8 +178,7 @@ License: You must have a valid license purchased only from https://themes.getboo
                                     <div class="col-lg-3 col-xl-3">
                                     </div>
                                     <div class="col-lg-9 col-xl-9">
-
-                                      <input class="form-control" type="hidden" name="id" value="<?php echo $cliente[0]['id'] ?>">
+                                      <input class="form-control" type="hidden" name="id" value="<?php echo $produto[0]['id'] ?>">
                                       <button type="submit" class="btn btn-success">Editar</button>&nbsp;
                                       <button type="reset" class="btn btn-secondary">Cancelar</button>
                                     </div>
@@ -215,6 +186,8 @@ License: You must have a valid license purchased only from https://themes.getboo
                                 </div>
                               </div>
                             </form>
+
+
                             <!-- ================================================= -->
                            </div>
 
@@ -288,6 +261,10 @@ License: You must have a valid license purchased only from https://themes.getboo
       <?php $this->view('partials/Scripts'); ?>
     <!-- end::Scripts -->
 
+    <!--begin::Page Vendors -->
+    <script src="<?php echo base_url(); ?>assets/vendors/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
+
+    <!--end::Page Vendors -->
 
 
     <!-- ============================= Script custom da pagina ========================== -->

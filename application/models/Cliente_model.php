@@ -14,10 +14,10 @@ class Cliente_model extends MY_Model {
 
     if($id == null){
       // aqui lista todos os usuarios
-      $result = $this->db->query("SELECT id, nome, endereco, cpf, telCel, telOut, email, sexo, datanasc, observacao, registro, status, md5(id) as hash FROM cliente;")->result_array();
+      $result = $this->db->query("SELECT id, nome, endereco, cpf, telCel, telOut, email, sexo, date_format(datanasc,'%d/%m/%Y') as datanasc, observacao, registro, status, md5(id) as hash FROM cliente;")->result_array();
     }else{
       // aqui passou o is pesquisa um unico usuário
-      $result = $this->db->query("SELECT id, nome, endereco, cpf, telCel, telOut, email, sexo, datanasc, observacao, registro, status, md5(id) as hash FROM cliente WHERE id = {$id};")->result_array();
+      $result = $this->db->query("SELECT id, nome, endereco, cpf, telCel, telOut, email, sexo,  date_format(datanasc,'%d/%m/%Y') as datanasc, observacao, registro, status, md5(id) as hash FROM cliente WHERE id = {$id};")->result_array();
 
     }
 

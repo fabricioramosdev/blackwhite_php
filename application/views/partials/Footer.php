@@ -1,7 +1,7 @@
 <!-- begin:: Footer -->
 <div class="k-footer	k-grid__item k-grid k-grid--desktop k-grid--ver-desktop">
   <div class="k-footer__copyright">
-    <a href="<?php base_url() ?>App/index" class="k-link"> &nbsp;<?php echo $appname; ?></a>
+    <a href="<?php echo base_url() ?>App/index" class="k-link"> &nbsp;<?php echo $appname; ?></a>
   </div>
   <div class="k-footer__menu">
     <!-- <a href="http://keenthemes.com/keen" target="_blank" class="k-footer__menu-link k-link">About</a>

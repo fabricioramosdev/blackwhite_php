@@ -81,30 +81,30 @@ License: You must have a valid license purchased only from https://themes.getboo
                               <div class="k-portlet__body">
                                 <div class="k-section k-section--first">
                                   <div class="k-section__body">
-                                    <div class="row"><label class="col-xl-3"></label></div>
+
 
                                   <div class="form-group row">
-                                      <label class="col-xl-3 col-lg-3 col-form-label">Nome</label>
+                                      <label class="col-xl-3 col-lg-3 col-form-label">Nome (*)</label>
                                       <div class="col-lg-9 col-xl-6">
-                                        <input class="form-control" type="text" name="nome" value="" autocomplete="off">
+                                        <input class="form-control" type="text" name="nome" value="" autocomplete="off" required>
                                       </div>
                                     </div>
                                     <div class="form-group row">
-                                      <label class="col-xl-3 col-lg-3 col-form-label">E-mail</label>
+                                      <label class="col-xl-3 col-lg-3 col-form-label">E-mail (*)</label>
                                       <div class="col-lg-9 col-xl-6">
-                                        <input class="form-control" type="email" name="email" value="" autocomplete="off">
+                                        <input class="form-control" type="email" name="email" value="" autocomplete="off" required>
                                       </div>
                                     </div>
                                     <div class="form-group row">
-                                      <label class="col-xl-3 col-lg-3 col-form-label">Senha</label>
+                                      <label class="col-xl-3 col-lg-3 col-form-label">Senha (*)</label>
                                       <div class="col-lg-9 col-xl-6">
-                                        <input class="form-control" type="password" name="senha" value="" autocomplete="off">
+                                        <input class="form-control" type="password" name="senha" value="" autocomplete="off" required>
                                       </div>
                                     </div>
 
 
                                     <div class="form-group row">
-                                      <label class="col-xl-3 col-lg-3 col-form-label">Perfil</label>
+                                      <label class="col-xl-3 col-lg-3 col-form-label">Perfil (*)</label>
                                       <div class="col-lg-9 col-xl-6">
 
                                         <select class="form-control" name="perfil" required>
@@ -119,7 +119,7 @@ License: You must have a valid license purchased only from https://themes.getboo
 
 
                                     <div class="form-group row">
-                                      <label class="col-xl-3 col-lg-3 col-form-label">Lojas</label>
+                                      <label class="col-xl-3 col-lg-3 col-form-label">Lojas (*)</label>
                                       <div class="col-lg-9 col-xl-6">
                                         <select class="form-control selectpicker" data-live-search="true" name="loja[]" required multiple>
                                           <?php foreach ($listaLoja as $key => $value): ?>
@@ -229,9 +229,7 @@ License: You must have a valid license purchased only from https://themes.getboo
       <?php $this->view('partials/Scripts'); ?>
     <!-- end::Scripts -->
 
-    <!--begin::Page Vendors -->
-    <script src="<?php echo base_url(); ?>assets/vendors/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
-    <!--end::Page Vendors -->
+
 
     <!--================================================ -->
     <!--begin::Script Alert -->

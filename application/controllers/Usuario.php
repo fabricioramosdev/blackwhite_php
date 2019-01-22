@@ -5,6 +5,7 @@ class Usuario extends MY_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->data['subTitle'] = 'Usuarios';
+		$this->load->library('form_validation');
 		$this->load->model('Usuario_model');
 	}
 
@@ -19,7 +20,7 @@ class Usuario extends MY_Controller {
 	{
 		$this->load->model('Loja_model');
 		$this->load->model('Perfil_model');
-
+		$this->load->library('form_validation');
 		$this->data['listaLoja'] = $this->Loja_model->listaLoja();
 		$this->data['listaPerfil'] = $this->Perfil_model->listaPerfil();
 
@@ -31,24 +32,43 @@ class Usuario extends MY_Controller {
 	public function post(){
 
 		$form = $this->input->post();
-		$id = $this->Usuario_model->post($form);
-		// recebendo o id do usuário prepara o array para inserir as permissões nas lojas
-		if($id != ""){
-			foreach ($form['loja'] as $key => $value) {
-				$accessoloja[] = array("usuario"=>$id,"loja"=>$value);
+
+		$this->setRegras();
+		if ($this->form_validation->run() != FALSE)
+		{
+
+
+			$id = $this->Usuario_model->post($form);
+			// recebendo o id do usuário prepara o array para inserir as permissões nas lojas
+			if($id != ""){
+				foreach ($form['loja'] as $key => $value) {
+					$accessoloja[] = array("usuario"=>$id,"loja"=>$value);
+				}
 			}
-		}
-		$this->load->model('Loja_model');
-		if($this->Loja_model->acessoloja($accessoloja)){
+			$this->load->model('Loja_model');
+			if($this->Loja_model->acessoloja($accessoloja)){
+
+				$this->session->set_flashdata('notfy',array(
+					'type'  => "success",
+					'title' => "Sucesso !!",
+					'msg' => ":) - Usuário salvo com sucesso!"
+				));
+				redirect(base_url('Usuario/index'));
+
+			}
+
+		}else{
 
 			$this->session->set_flashdata('notfy',array(
-				'type'  => "success",
-				'title' => "Sucesso !!",
-				'msg' => ":) - Usuário salvo com sucesso!"
+				'type'  => "warning",
+				'title' => "Check formulário",
+				'msg' => ":( - Você preeencheu dados inválidos  !"
 			));
-			redirect(base_url('Usuario/index'));
+			redirect($this->agent->referrer());
+
 
 		}
+
 
 	}
 
@@ -70,42 +90,41 @@ class Usuario extends MY_Controller {
 
 	public function put(){
 
-		$form =  $this->input->post();
+		  $form =  $this->input->post();
 
-		if (!isset($form['status']))
-		$form['status'] = "0";
+			if (!isset($form['status']))
+			$form['status'] = "0";
 
 
-		$usuario = array("id"=>$form['id'],
-		"nome"=>$form['nome'],
-		"email"=>$form['email'],
-		"senha"=>md5($form['senha']),
-		"fkperfil"=>$form['perfil'],
-		"status"=>$form['status']);
+			$usuario = array("id"=>$form['id'],
+			"nome"=>$form['nome'],
+			"email"=>$form['email'],
+			"senha"=>md5($form['senha']),
+			"fkperfil"=>$form['perfil'],
+			"status"=>$form['status']);
 
-		if($form['senha'] == "")
-		unset($usuario['senha']);
+			if($form['senha'] == "")
+			unset($usuario['senha']);
 
-		$this->Usuario_model->put($usuario);
+			$this->Usuario_model->put($usuario);
 
-		//prepara o acesso as lojas
-		foreach ($form['loja'] as $key => $value) {
-			$accessoloja[] = array("usuario"=>$form['id'],"loja"=>$value);
-		}
+			//prepara o acesso as lojas
+			foreach ($form['loja'] as $key => $value) {
+				$accessoloja[] = array("usuario"=>$form['id'],"loja"=>$value);
+			}
 
-		// executa os acesso as lojas
-		$this->load->model('Loja_model');
-		// echo json_encode($accessoloja);
-		// exit();
+			// executa os acesso as lojas
+			$this->load->model('Loja_model');
+			$this->Loja_model->acessoloja($accessoloja);
 
-		$this->Loja_model->acessoloja($accessoloja);
+			$this->session->set_flashdata('notfy',array(
+				'type'  => "success",
+				'title' => "Sucesso !!",
+				'msg' => ":) - Usuário salvo com sucesso!"
+			));
+			redirect(base_url('Usuario/index'));
 
-		$this->session->set_flashdata('notfy',array(
-			'type'  => "success",
-			'title' => "Sucesso !!",
-			'msg' => ":) - Usuário salvo com sucesso!"
-		));
-		redirect(base_url('Usuario/index'));
+
 
 
 	}
@@ -113,16 +132,27 @@ class Usuario extends MY_Controller {
 
 	public function delete(){
 
-			$form =  $this->input->post();
-			$this->session->set_flashdata('notfy',array(
-				'type'  => "success",
-				'title' => "Sucesso !!",
-				'msg' => ":) - Usuário deletado com sucesso!"
-			));
-			echo json_encode($this->Usuario_model->delete($form['id']));
+		$form =  $this->input->post();
+		$this->session->set_flashdata('notfy',array(
+			'type'  => "success",
+			'title' => "Sucesso !!",
+			'msg' => ":) - Usuário deletado com sucesso!"
+		));
+		echo json_encode($this->Usuario_model->delete($form['id']));
 
 
 	}
+
+
+	//=========================== setRegras de validação do fomulario
+	private function setRegras() {
+		$this->form_validation->set_rules('perfil', 'Perfil', 'required');
+		$this->form_validation->set_rules('senha', 'Senha', 'required');
+		$this->form_validation->set_rules('email', 'E-mail', 'required');
+		$this->form_validation->set_rules('nome', 'Nome', 'required');
+
+	}
+	//=================================================================
 
 
 

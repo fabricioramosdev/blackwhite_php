@@ -7,7 +7,7 @@ class Login extends CI_Controller {
 		 $this->load->library('form_validation');
 		 $this->load->model("Login_model");
 		 $this->load->model("Loja_model");
-		 $this->data['title'] = 'black and White Style | ';
+		 $this->data['title'] = 'Black and White Style | ';
 		 $this->data['subTitle'] = 'Login';
 		 $this->data['appname'] = date('Y')." - &copy; Black and White Style";
  }
