@@ -180,7 +180,7 @@ License: You must have a valid license purchased only from https://themes.getboo
                                     <div class="col-lg-9 col-xl-9">
                                       <input class="form-control" type="hidden" name="id" value="<?php echo $produto[0]['id'] ?>">
                                       <button type="submit" class="btn btn-success">Editar</button>&nbsp;
-                                      <button type="reset" class="btn btn-secondary">Cancelar</button>
+                          
                                     </div>
                                   </div>
                                 </div>

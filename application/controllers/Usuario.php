@@ -37,7 +37,6 @@ class Usuario extends MY_Controller {
 		if ($this->form_validation->run() != FALSE)
 		{
 
-
 			$id = $this->Usuario_model->post($form);
 			// recebendo o id do usuário prepara o array para inserir as permissões nas lojas
 			if($id != ""){
@@ -90,39 +89,39 @@ class Usuario extends MY_Controller {
 
 	public function put(){
 
-		  $form =  $this->input->post();
+		$form =  $this->input->post();
 
-			if (!isset($form['status']))
-			$form['status'] = "0";
+		if (!isset($form['status']))
+		$form['status'] = "0";
 
 
-			$usuario = array("id"=>$form['id'],
-			"nome"=>$form['nome'],
-			"email"=>$form['email'],
-			"senha"=>md5($form['senha']),
-			"fkperfil"=>$form['perfil'],
-			"status"=>$form['status']);
+		$usuario = array("id"=>$form['id'],
+		"nome"=>$form['nome'],
+		"email"=>$form['email'],
+		"senha"=>md5($form['senha']),
+		"fkperfil"=>$form['perfil'],
+		"status"=>$form['status']);
 
-			if($form['senha'] == "")
-			unset($usuario['senha']);
+		if($form['senha'] == "")
+		unset($usuario['senha']);
 
-			$this->Usuario_model->put($usuario);
+		$this->Usuario_model->put($usuario);
 
-			//prepara o acesso as lojas
-			foreach ($form['loja'] as $key => $value) {
-				$accessoloja[] = array("usuario"=>$form['id'],"loja"=>$value);
-			}
+		//prepara o acesso as lojas
+		foreach ($form['loja'] as $key => $value) {
+			$accessoloja[] = array("usuario"=>$form['id'],"loja"=>$value);
+		}
 
-			// executa os acesso as lojas
-			$this->load->model('Loja_model');
-			$this->Loja_model->acessoloja($accessoloja);
+		// executa os acesso as lojas
+		$this->load->model('Loja_model');
+		$this->Loja_model->acessoloja($accessoloja);
 
-			$this->session->set_flashdata('notfy',array(
-				'type'  => "success",
-				'title' => "Sucesso !!",
-				'msg' => ":) - Usuário salvo com sucesso!"
-			));
-			redirect(base_url('Usuario/index'));
+		$this->session->set_flashdata('notfy',array(
+			'type'  => "success",
+			'title' => "Sucesso !!",
+			'msg' => ":) - Usuário salvo com sucesso!"
+		));
+		redirect(base_url('Usuario/index'));
 
 
 

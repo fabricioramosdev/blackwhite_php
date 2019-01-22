@@ -21,7 +21,7 @@ class Cliente extends MY_Controller {
 
 	public function add()
 	{
-
+		
 		$this->load->view('cliente/add_view',$this->data);
 
 	}
@@ -52,7 +52,7 @@ class Cliente extends MY_Controller {
 			if(	$form['datanasc'] != ""){
 				$form['datanasc'] = 	parseDate($form['datanasc']);
 			}else{
-					$form['datanasc'] =  NULL;
+				$form['datanasc'] =  NULL;
 			}
 
 			$this->Cliente_model->post($form);
@@ -104,7 +104,7 @@ class Cliente extends MY_Controller {
 			if(	$form['datanasc'] != ""){
 				$form['datanasc'] = 	parseDate($form['datanasc']);
 			}else{
-					$form['datanasc'] =  NULL;
+				$form['datanasc'] =  NULL;
 			}
 
 

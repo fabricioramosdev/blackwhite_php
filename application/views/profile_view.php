@@ -75,15 +75,15 @@ License: You must have a valid license purchased only from https://themes.getboo
 																		<div class="row"><label class="col-xl-3"></label></div>
 
   																<div class="form-group row">
-																			<label class="col-xl-3 col-lg-3 col-form-label">Nome</label>
+																			<label class="col-xl-3 col-lg-3 col-form-label">Nome (*)</label>
 																			<div class="col-lg-9 col-xl-6">
-																				<input class="form-control" type="text" name="nome" value="<?php echo  $this->session->usuario[0]['nome']; ?>" autocomplete="off">
+																				<input class="form-control" type="text" name="nome" value="<?php echo  $this->session->usuario[0]['nome']; ?>" autocomplete="off" required>
 																			</div>
 																		</div>
 																		<div class="form-group row">
-																			<label class="col-xl-3 col-lg-3 col-form-label">E-mail</label>
+																			<label class="col-xl-3 col-lg-3 col-form-label">E-mail (*)</label>
 																			<div class="col-lg-9 col-xl-6">
-																				<input class="form-control" type="email" name="email" value="<?php echo  $this->session->usuario[0]['email']; ?>" autocomplete="off">
+																				<input class="form-control" type="email" name="email" value="<?php echo  $this->session->usuario[0]['email']; ?>" autocomplete="off" required>
 																			</div>
 																		</div>
 																		<div class="form-group row">

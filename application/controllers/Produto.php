@@ -5,7 +5,7 @@ class Produto extends MY_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->data['subTitle'] = 'Produto';
-	  $this->load->library('form_validation');
+		$this->load->library('form_validation');
 		$this->load->model('Produto_model');
 		$this->load->helper('html_util_helper');
 		$this->load->helper('date_helper');
@@ -40,6 +40,7 @@ class Produto extends MY_Controller {
 				'title' => "Check formulário",
 				'msg' => ":( - Você preeencheu dados inválidos  !"
 			));
+			redirect($this->agent->referrer());
 
 
 		}else{
@@ -80,6 +81,7 @@ class Produto extends MY_Controller {
 				'title' => "Check formulário",
 				'msg' => ":( - Você preeencheu dados inválidos  !"
 			));
+				redirect($this->agent->referrer());
 
 
 		}else{
