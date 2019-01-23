@@ -46,15 +46,22 @@ class Produto extends MY_Controller {
 		}else{
 
 			$form['estoque_now'] = $form['estoque_ini'];
-			$this->Produto_model->post($form);
+
+			$idProduto = $this->Produto_model->post($form);
+
+			// prepara array para dar input do novo produto no estoque
+			$inputProdutoEstoque = array("produto"=> $idProduto,
+			"input"=> (Integer) $form['estoque_ini'],
+			"usuario"=> $this->session->usuario[0]['idperfil']);
+
+			$this->load->model('Estoque_model');
+			$this->Estoque_model->inputProdutoEstoque($inputProdutoEstoque);
 
 			$this->session->set_flashdata('notfy',array(
 				'type'  => "success",
 				'title' => "Sucesso !!",
 				'msg' => ":) - Produto salvo com sucesso!"
 			));
-
-
 
 		}
 		redirect(base_url('Produto/index'));
@@ -121,6 +128,15 @@ class Produto extends MY_Controller {
 		echo json_encode( $this->Cliente_model->listaCliente($form['id']));
 
 	}
+
+	public function checkcodigo(){
+		$form =  $this->input->post();
+		echo json_encode($this->Produto_model->checkcodigo($form));
+
+	}
+
+
+
 
 
 	//=========================== setRegras de validação do fomulario

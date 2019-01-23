@@ -90,8 +90,8 @@ $dev = ($_SERVER['SERVER_NAME'] === 'localhost');
 define('DEV', $dev);
 //========================================= Define o banco de dados do qual deve connectar
 define('HOSTNAME', $dev ? 'localhost' : 'localhost');
-define('DATABASE', $dev ? 'bwdev' : 'bwdev');
-define('USERNAME', $dev ? 'root' : 'root');
+define('DATABASE', $dev ? 'bwdev' : 'u447066707_bwdev');
+define('USERNAME', $dev ? 'root' : 'u447066707_bwdev');
 define('PASSWORD', $dev ? 'pri142407' :'pri142407');
 //========================================= Define a constante BASEURL
-define('BASEURL', $dev ? 'http://localhost/bwdev/' : 'http://192.168.1.102/bwdev/');
+define('BASEURL', $dev ? 'http://localhost/bwdev/' : 'http://u447066707.hostingerapp.com/bwdev/');

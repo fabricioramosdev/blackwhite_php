@@ -14,10 +14,10 @@ class Produto_model extends MY_Model {
 
     if($id == null){
       // aqui lista todos os produtos
-      $result = $this->db->query("SELECT id, descricao, detalhe, preco_venda, preco_custo, estoque_ini, estoque_now, estoque_min, status,  registro, md5(id) as hash FROM produto;")->result_array();
+      $result = $this->db->query("SELECT id, codigo, descricao, detalhe, preco_venda, preco_custo, estoque_ini, estoque_now, estoque_min, status, registro, md5(id) as hash FROM produto;")->result_array();
     }else{
       // aqui passou o is pesquisa um unico produto
-      $result = $this->db->query("SELECT id, descricao, detalhe, preco_venda, preco_custo, estoque_ini, estoque_now, estoque_min, status, registro, md5(id) as hash FROM produto WHERE id = {$id};")->result_array();
+      $result = $this->db->query("SELECT id, codigo, descricao, detalhe, preco_venda, preco_custo, estoque_ini, estoque_now, estoque_min, status, registro, md5(id) as hash FROM produto WHERE id = {$id};")->result_array();
 
     }
 
@@ -28,7 +28,11 @@ class Produto_model extends MY_Model {
 
     public function post($data){
       $result = $this->db->insert($this->table, $data);
-      return $result;
+
+      if($result){
+        return    $this->db->insert_id();
+      }
+
     }
 
 
@@ -41,6 +45,18 @@ class Produto_model extends MY_Model {
 
     }
 
+
+    public function checkcodigo($data){
+
+    	if(!isset($data['id'])){
+            // não passa o id esta inserindo o produto
+            $result = $this->db->query("SELECT id, codigo, descricao FROM produto WHERE codigo = '{$data['codigo']}';")->result_array();
+        }else{
+            //passa  o id tem que verificar se outro produto não esta usando o mesmo codigo por isso id !=
+            $result = $this->db->query("SELECT id, codigo, descricao FROM produto WHERE codigo = '{$data['codigo']}' AND id != '{$data['id']}' ;")->result_array();
+        }
+        return $result;
+    }
 
 
 

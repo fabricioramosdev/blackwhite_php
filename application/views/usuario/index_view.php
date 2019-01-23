@@ -274,7 +274,6 @@ License: You must have a valid license purchased only from https://themes.getboo
         }).then(function(result){
             if (result.value) {
 
-              console.log('chegou aqui')
                   //===============================================
                       $.ajax(
                         {

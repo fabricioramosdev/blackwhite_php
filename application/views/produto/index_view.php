@@ -86,9 +86,11 @@ License: You must have a valid license purchased only from https://themes.getboo
                               <thead>
                                 <tr>
                                   <th>ID</th>
+                                  <th>Código</th>
                                   <th>Descrição</th>
                                   <th>R$ Venda</th>
                                   <th>Estoque Agora</th>
+                                  <th>Estoque Min.</th>
                                   <th>Status</th>
                                   <th></th>
                                 </tr>
@@ -99,9 +101,11 @@ License: You must have a valid license purchased only from https://themes.getboo
                                 <?php foreach ($listaprodutos as $key => $value): ?>
                                   <tr>
                                     <td><?php echo $value['id'] ?></td>
+                                    <td><?php echo $value['codigo'] ?></td>
             												<td><?php echo $value['descricao'] ?></td>
             												<td><?php echo 'R$ ' . number_format($value['preco_venda'], 2);  ?></td>
                                     <td><?php echo $value['estoque_now'] ?></td>
+                                    <td><?php echo $value['estoque_min'] ?></td>
                         						<td><?php echo $value['status'] ?></td>
             												<td nowrap></td>
                                   </tr>
@@ -224,7 +228,7 @@ License: You must have a valid license purchased only from https://themes.getboo
     					},
     				},
     				{
-    					targets: 4,
+    					targets: 6,
     					render: function(data, type, full, meta) {
     						var status = {
     							1: {'title': 'Ativo', 'class': ' k-badge--success'},

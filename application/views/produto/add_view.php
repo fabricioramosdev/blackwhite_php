@@ -82,7 +82,13 @@ License: You must have a valid license purchased only from https://themes.getboo
                                 <div class="k-section k-section--first">
                                   <div class="k-section__body">
 
-                                  <!-- id, descricao, detalhe, preco_venda, preco_custo, estoque_ini, estoque_now, estoque_min, status, registro -->
+                                    <div class="form-group row">
+                                        <label class="col-xl-3 col-lg-3 col-form-label">Codigo  (*)</label>
+                                        <div class="col-lg-9 col-xl-6">
+                                          <input class="form-control" type="text" name="codigo" value="" autocomplete="off" required>
+                                          <span class="form-text text-muted">Codigo interno</span>
+                                        </div>
+                                    </div>
 
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 col-form-label">Descrição (*)</label>
@@ -242,6 +248,44 @@ License: You must have a valid license purchased only from https://themes.getboo
 
     <!-- ============================= Script custom da pagina ========================== -->
     <script type="text/javascript">
+
+
+      $('input[name="codigo"]').on('focusout',function() {
+
+        var codigo = $('input[name="codigo"]').val();
+
+        if(codigo != ''){
+
+          //===============================================
+              $.ajax(
+                {
+                  url: app_u+'Produto/checkcodigo',
+                  data: {
+                    codigo: codigo
+                  },
+                  type: 'post',
+                  dataType: 'json',
+                  success: function (data) {
+            
+                    if(data.length != 0){
+                      swal(
+                        'Código interno duplicado !',
+                        `Este código ${codigo} esta sendo usado por outro produto !`,
+                        'warning'
+                      );
+                    }
+
+                  }
+                }
+              );
+        //===============================================
+
+
+        }
+
+
+      });
+
 
 
     </script>
