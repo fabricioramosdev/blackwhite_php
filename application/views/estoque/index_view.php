@@ -62,7 +62,7 @@ License: You must have a valid license purchased only from https://themes.getboo
 													<div class="k-portlet">
 														<div class="k-portlet__head">
 															<div class="k-portlet__head-label">
-																<h3 class="k-portlet__head-title">Lista de clientes</h3>
+																<h3 class="k-portlet__head-title">Estoque rápido</h3>
 															</div>
 
 
@@ -71,9 +71,9 @@ License: You must have a valid license purchased only from https://themes.getboo
                         		<div class="k-portlet__body">
 
                             <!-- ================================================= -->
-                            <div class="row" style="margin-bottom:20px">
-                              <div class="col-sm-12 col-md-12"><a href="<?php echo base_url(); ?>Cliente/add" class="btn btn-success btn-wide">Adicionar Cliente</a></div>
-                            </div>
+                            <div class="row" style="margin-bottom:15px">
+                        			<div class="col-sm col-md"><a href="javascript:;" onClick="history.back();" class="btn btn-focus btn-wide"><i class="fa fa-undo"></i> Voltar</a></div>
+                        		</div>
                             <!-- ================================================= -->
 
                             <!-- =================================================
@@ -86,20 +86,22 @@ License: You must have a valid license purchased only from https://themes.getboo
                               <thead>
                                 <tr>
                                   <th>ID</th>
-                                  <th>Nome</th>
-                                  <th>CPF</th>
-                                  <th>Tel.Cel</th>
+                                  <th>Código</th>
+                                  <th>Descrição</th>
+                                  <th>Estoque saldo</th>
                                   <th>Status</th>
                                   <th></th>
                                 </tr>
                               </thead>
                               <tbody>
-                                <?php foreach ($listaclientes as $key => $value): ?>
+
+
+                                <?php foreach ($listaprodutos as $key => $value): ?>
                                   <tr>
                                     <td><?php echo $value['id'] ?></td>
-            												<td><?php echo $value['nome'] ?></td>
-            												<td><?php echo $value['cpf'] ?></td>
-                                    <td><a href="https://wa.me/".<?php echo trim($value['telCel']); ?>."?text=Olá" target="_blank"><?php echo $value['telCel'] ?> </a>** Montar link**</td>
+                                    <td><?php echo $value['codigo'] ?></td>
+            												<td><?php echo $value['descricao'] ?></td>
+                                    <td><?php echo $value['estoque_saldo'] ?></td>
                         						<td><?php echo $value['status'] ?></td>
             												<td nowrap></td>
                                   </tr>
@@ -123,7 +125,6 @@ License: You must have a valid license purchased only from https://themes.getboo
 										</div>
 							</div>
               <!-- =========================================================================== -->
-
 
             </div>
             <!-- end:: Content Body -->
@@ -212,9 +213,7 @@ License: You must have a valid license purchased only from https://themes.getboo
                                   <i class="la la-ellipsis-h"></i>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="<?php echo base_url(); ?>Cliente/edit/${full[0]}"><i class="la la-edit"></i>Editar Cliente</a>
-                                    <a class="dropdown-item" href="javascript:;"  onClick="view(${full[0]},'Cliente/view')"><i class="la la-search"></i>Ver Cliente</a>
-                                    <a class="dropdown-item" href="javascript:;"  onClick="deletar(${full[0]},'Cliente/delete')"><i class="la la-trash"></i>Deletar Cliente</a>
+                                      <a class="dropdown-item" href="javascript:;"  onClick="view('${full[0]}','${full[3]}','${full[2]}')"><i class="la la-cube"></i>Alterar Estoque</a>
                                 </div>
                             </span>
                             <a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="View">
@@ -255,114 +254,55 @@ License: You must have a valid license purchased only from https://themes.getboo
     });
 
 
-    var deletar =  function(id, url) {
 
-      if (id != '') {
-        swal({
-            title: 'Você tem certeza?',
-            text: "Você não poderá reverter isso!",
-            type: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Sim, exclua!',
-            cancelButtonText: 'Não, cancelar!',
-            reverseButtons: true
-        }).then(function(result){
-            if (result.value) {
+    var view =  function(id,saldo,descricao){
 
-
-                  //===============================================
-                      $.ajax(
-                        {
-                          url: app_u +''+ url,
-                          data: {
-                            id: id
-                          },
-                          type: 'post',
-                          dataType: 'json',
-                          success: function (data) {
-
-                            swal(
-                              'Deletado!',
-                              'Seu registro foi excluído.',
-                              'success'
-                            );
-                            location.reload();
-                          }
-                        }
-                      );
-                //===============================================
-            } else if (result.dismiss === 'cancel') {
-                swal(
-                    'Cancelado',
-                    'Seu registro  está seguro :)',
-                    'error'
-                )
-            }
-        });
-
-      }
-
-    }
-
-    var view =  function(id,url){
+      console.log(id);
+      console.log(saldo);
+      console.log(descricao);
 
 
 
           var e = jQuery(`<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-         <div class="modal-dialog" role="document">
-           <div class="modal-content">
-             <div class="modal-header">
-               <h5 class="modal-title" id="exampleModalLabel">Dados Cliente</h5>
-               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                 <span aria-hidden="true">&times;</span>
-               </button>
-             </div>
-             <div class="modal-body">
+                <div class="modal-dialog" role="document">
+                  <form  class="k-form k-form--label-right"  action="<?php echo base_url() ?>Estoque/put" method="post">
 
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title">Estoque rápido </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <h5 class="text-center"><span class="produto"></span></h5>
+                        <div class="form-group row">
+                          <label class="col-xl-3 col-lg-3 col-form-label">Estoque</label>
+                          <div class="col-lg-9 col-xl-39">
+                            <input class="form-control" type="number" name="estoque_saldo" value="" autocomplete="off" required>
+                            <span class="form-text text-muted">Estoque saldo</span>
+                          </div>
+                        </div>
 
+                      </div>
+                      <div class="modal-footer">
+                        <input class="form-control" type="hidden" name="id" value="" autocomplete="off">
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                      </div>
+                    </div>
+                    </form>
+                  </div>
+              </div>`);
 
-             </div>
-             <div class="modal-footer">
-               <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-             </div>
-           </div>
-         </div>
-       </div>`);
-
-        if (id != '') {
-
-
-          //===============================================
-              $.ajax(
-                {
-                  url: app_u +''+ url,
-                  data: {
-                    id: id
-                  },
-                  type: 'post',
-                  dataType: 'json',
-                  success: function (data) {
-
-                    e.find('[class="modal-body"]').html(`<p><strong>Nome:</strong> ${data[0].nome} (${data[0].sexo})</p>
-                      <p><strong>Endereço:</strong><br> ${data[0].endereco}</p>
-                      <p><strong>CPF:</strong> ${data[0].cpf}</p>
-                      <p><strong>Tel. Cel:</strong>  ${data[0].telCel}</p>
-                      <p><strong>Tel. Out:</strong>  ${data[0].telOut}</p>
-                      <p><strong>E-mail:</strong>  ${data[0].email}</p>
-                      <p><strong>Data Nasc.:</strong> ${data[0].datanasc}</p>
-                      <p><strong>Obs.:</strong> ${data[0].observacao}</p>
-                      `);
-                    e.modal('toggle');
-
-                  }
-                }
-              );
-        //===============================================
-
+              e.find('input[name="id"]').val(id);
+              e.find('span[class="produto"]').html(descricao);
+              e.find('input[name="estoque_saldo" ]').val(saldo);
+              e.modal('toggle');
 
         }
 
-    }
+
 
 
     </script>

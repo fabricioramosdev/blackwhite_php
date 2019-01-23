@@ -72,7 +72,7 @@ License: You must have a valid license purchased only from https://themes.getboo
 
                             <!-- ================================================= -->
                             <div class="row" style="margin-bottom:15px">
-                              <div class="col-sm col-md"><a href="<?php echo base_url(); ?>Produto/index" class="btn btn-focus btn-wide">Voltar</a></div>
+                              <div class="col-sm col-md"><a href="<?php echo base_url(); ?>Produto/index" class="btn btn-focus btn-wide"><i class="fa fa-undo"></i> Voltar</a></div>
                             </div>
                             <!-- ================================================= -->
 
@@ -85,10 +85,37 @@ License: You must have a valid license purchased only from https://themes.getboo
 
 
                                     <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 col-form-label">Codigo  (*)</label>
+                                        <label class="col-xl-3 col-lg-3 col-form-label">Categoria (*)</label>
+                                        <div class="col-lg-9 col-xl-9">
+
+                                          <select class="form-control k_selectpicker" name="categoria" required>
+                                           <option value="">Selecione...</option>
+                                            <?php foreach ($listaprodutoscategorias as $key => $value):
+                                               ?>
+                                              <optgroup label="<?php echo $value['descricao'] ?>" data-max-options="2">
+                                                 <?php foreach ($value['subcat'] as $key => $value_subcat):
+                                                   $selected = '';
+                                                   if($value_subcat['id'] == $produto[0]['categoria']){
+                                                     $selected = 'selected';
+                                                   }
+
+                                                    ?>
+                                                   <option <?php echo $selected; ?> value="<?php echo $value_subcat['id']  ?>"><?php echo $value_subcat['descricao'] ?></option>
+                                                 <?php endforeach; ?>
+                                              </optgroup>
+                                            <?php endforeach; ?>
+                                          </select>
+
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group row">
+                                        <label class="col-xl-3 col-lg-3 col-form-label">Código  (*)</label>
                                         <div class="col-lg-9 col-xl-6">
-                                          <input class="form-control" type="text" name="codigo" value="<?php echo $produto[0]['codigo'] ?>" autocomplete="off" required>
-                                          <span class="form-text text-muted">Codigo interno</span>
+                                          <input class="form-control" type="text" name="codigo" value="<?php echo $produto[0]['codigo'] ?>" autocomplete="off" required placeholder="CA0000">
+                                          <span class="form-text text-muted">Codigo interno Ex.Ex. CA0000</span>
                                         </div>
                                     </div>
 
@@ -144,12 +171,12 @@ License: You must have a valid license purchased only from https://themes.getboo
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 col-form-label">Estoque (*)</label>
                                         <div class="col-lg-3 col-xl-3">
-                                          <input class="form-control" type="number" name="estoque_ini" value="<?php echo $produto[0]['estoque_ini'] ?>" autocomplete="off" required>
-                                          <span class="form-text text-muted">Estoque inicial (*)</span>
+                                          <input class="form-control" type="number" name="estoque_saldo" value="<?php echo $produto[0]['estoque_saldo'] ?>" autocomplete="off" required>
+                                          <span class="form-text text-muted">Estoque saldo (*)</span>
                                         </div>
 
                                         <div class="col-lg-3 col-xl-3">
-                                          <input class="form-control" type="number" name="estoque_min" value="<?php echo $produto[0]['estoque_min'] ?>" autocomplete="off">
+                                          <input class="form-control" type="number" name="estoque_minimo" value="<?php echo $produto[0]['estoque_minimo'] ?>" autocomplete="off">
                                           <span class="form-text text-muted">Estoque mínimo</span>
                                         </div>
                                     </div>
@@ -182,12 +209,10 @@ License: You must have a valid license purchased only from https://themes.getboo
                               <div class="k-portlet__foot">
                                 <div class="k-form__actions">
                                   <div class="row">
-                                    <div class="col-lg-3 col-xl-3">
-                                    </div>
-                                    <div class="col-lg-9 col-xl-9">
-                                      <input class="form-control" type="hidden" name="id" value="<?php echo $produto[0]['id'] ?>">
-                                      <button type="submit" class="btn btn-success">Editar</button>&nbsp;
 
+                                    <div class="col-lg-12 col-xl-12">
+                                      <input class="form-control" type="hidden" name="id" value="<?php echo $produto[0]['id'] ?>">
+                                      <button type="submit" class="btn btn-success btn-wide">Editar</button>&nbsp;
                                     </div>
                                   </div>
                                 </div>
@@ -270,7 +295,7 @@ License: You must have a valid license purchased only from https://themes.getboo
 
     <!--begin::Page Vendors -->
     <script src="<?php echo base_url(); ?>assets/vendors/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
-
+    <script src="<?php echo base_url(); ?>assets/demo/default/custom/components/extended/sweetalert2.js" type="text/javascript"></script>
     <!--end::Page Vendors -->
 
 
@@ -278,37 +303,68 @@ License: You must have a valid license purchased only from https://themes.getboo
     <script type="text/javascript">
 
 
+
+    // retorna as primeiras letras da categoria de produto para compor o codigo interno
+    $('select[name="categoria"]').on('change',function(){
+      var codigo = $('option:selected', this).html().slice(0,2).toUpperCase();
+
+      swal({
+          title: 'Você tem certeza?',
+          text: "Deseja mesmo alterar a categoria do produto? Seu código também será alterado",
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Sim, altere!',
+          cancelButtonText: 'Não, cancelar!',
+          reverseButtons: true
+      }).then(function(result){
+        if (result.value) {
+            //===============================================
+             $('input[name="codigo"]').val(codigo);
+            //===============================================
+        } else if (result.dismiss === 'cancel') {
+            swal(
+                'Cancelado',
+                'Seu registro  está seguro :)',
+                'error'
+            )
+        }
+    });
+
+
+  });
+
+
     $('input[name="codigo"]').on('focusout',function() {
 
-      var codigo = $('input[name="codigo"]').val();
+      var codigo = this.value;
       var id = $('input[name="id"]').val();
 
       if(codigo != ''){
 
         //===============================================
-            $.ajax(
-              {
-                url: app_u+'Produto/checkcodigo',
-                data: {
-                  codigo: codigo,
-                  id:id
-                },
-                type: 'post',
-                dataType: 'json',
-                success: function (data) {
+        $.ajax(
+          {
+            url: app_u+'Produto/checkcodigo',
+            data: {
+              codigo: codigo,
+              id:id
+            },
+            type: 'post',
+            dataType: 'json',
+            success: function (data) {
 
-                  if(data.length != 0){
-                    swal(
-                      'Código interno duplicado !',
-                      `Este código ${codigo} esta sendo usado por outro produto !`,
-                      'warning'
-                    );
-                  }
-
-                }
+              if(data.length != 0){
+                swal(
+                  'Código interno duplicado !',
+                  `Este código ${codigo} esta sendo usado por outro produto !`,
+                  'warning'
+                );
               }
-            );
-      //===============================================
+
+            }
+          }
+        );
+        //===============================================
 
 
       }
@@ -319,7 +375,7 @@ License: You must have a valid license purchased only from https://themes.getboo
 
 
     </script>
-        <!-- ============================= Script custom da pagina ========================== -->
+    <!-- ============================= Script custom da pagina ========================== -->
 
 
     <!--================================================ -->

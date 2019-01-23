@@ -72,7 +72,7 @@ License: You must have a valid license purchased only from https://themes.getboo
 
                             <!-- ================================================= -->
                             <div class="row" style="margin-bottom:15px">
-                              <div class="col-sm col-md"><a href="<?php echo base_url(); ?>Usuario/index" class="btn btn-focus btn-wide">Voltar</a></div>
+                              <div class="col-sm col-md"><a href="<?php echo base_url(); ?>Usuario/index" class="btn btn-focus btn-wide"><i class="fa fa-undo"></i> Voltar</a></div>
                             </div>
                             <!-- ================================================= -->
 
@@ -170,13 +170,12 @@ License: You must have a valid license purchased only from https://themes.getboo
                               <div class="k-portlet__foot">
                                 <div class="k-form__actions">
                                   <div class="row">
-                                    <div class="col-lg-3 col-xl-3">
-                                    </div>
-                                    <div class="col-lg-9 col-xl-9">
+
+                                    <div class="col-lg-12 col-xl-12">
 
                                       <input class="form-control" type="hidden" name="id" value="<?php echo $usuario[0]['id']; ?>">
-                                      <button type="submit" class="btn btn-primary">Editar</button>&nbsp;
-                              
+                                      <button type="submit" class="btn btn-primary btn-wide">Editar</button>&nbsp;
+
                                     </div>
                                   </div>
                                 </div>

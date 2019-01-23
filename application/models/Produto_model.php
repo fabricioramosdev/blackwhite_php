@@ -14,10 +14,10 @@ class Produto_model extends MY_Model {
 
     if($id == null){
       // aqui lista todos os produtos
-      $result = $this->db->query("SELECT id, codigo, descricao, detalhe, preco_venda, preco_custo, estoque_ini, estoque_now, estoque_min, status, registro, md5(id) as hash FROM produto;")->result_array();
+      $result = $this->db->query("SELECT id, categoria, codigo, descricao, detalhe, preco_venda, preco_custo, estoque_saldo, estoque_minimo, status, registro, md5(id) as hash FROM produto;")->result_array();
     }else{
       // aqui passou o is pesquisa um unico produto
-      $result = $this->db->query("SELECT id, codigo, descricao, detalhe, preco_venda, preco_custo, estoque_ini, estoque_now, estoque_min, status, registro, md5(id) as hash FROM produto WHERE id = {$id};")->result_array();
+      $result = $this->db->query("SELECT id, categoria, codigo, descricao, detalhe, preco_venda, preco_custo, estoque_saldo, estoque_minimo, status, registro, md5(id) as hash FROM produto WHERE id = {$id};")->result_array();
 
     }
 

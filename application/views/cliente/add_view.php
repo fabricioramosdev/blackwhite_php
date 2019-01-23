@@ -72,7 +72,7 @@ License: You must have a valid license purchased only from https://themes.getboo
 
                             <!-- ================================================= -->
                             <div class="row" style="margin-bottom:15px">
-                              <div class="col-sm col-md"><a href="<?php echo base_url(); ?>Cliente/index" class="btn btn-focus btn-wide">Voltar</a></div>
+                              <div class="col-sm col-md"><a href="<?php echo base_url(); ?>Cliente/index" class="btn btn-focus btn-wide"><i class="fa fa-undo"></i> Voltar</a></div>
                             </div>
                             <!-- ================================================= -->
 
@@ -180,10 +180,9 @@ License: You must have a valid license purchased only from https://themes.getboo
                               <div class="k-portlet__foot">
                                 <div class="k-form__actions">
                                   <div class="row">
-                                    <div class="col-lg-3 col-xl-3">
-                                    </div>
-                                    <div class="col-lg-9 col-xl-9">
-                                      <button type="submit" class="btn btn-success">Salvar</button>&nbsp;
+
+                                    <div class="col-lg-12 col-xl-12">
+                                      <button type="submit" class="btn btn-success btn-wide">Salvar</button>&nbsp;
                                       <button type="reset" class="btn btn-secondary">Cancelar</button>
                                     </div>
                                   </div>

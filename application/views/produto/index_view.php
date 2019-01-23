@@ -72,7 +72,8 @@ License: You must have a valid license purchased only from https://themes.getboo
 
                             <!-- ================================================= -->
                             <div class="row" style="margin-bottom:20px">
-                              <div class="col-sm-12 col-md-12"><a href="<?php echo base_url(); ?>Produto/add" class="btn btn-success btn-wide">Adicionar Produto</a></div>
+                              <div class="col-sm-6 col-md-6"><a href="<?php echo base_url(); ?>Produto/add" class="btn btn-success btn-wide">Adicionar Produto</a></div>
+                                <div class="col-sm-6 col-md-6 text-right"><a href="<?php echo base_url(); ?>Estoque/index" class="btn btn-info btn-wide">Estoque Rápido</a></div>
                             </div>
                             <!-- ================================================= -->
 
@@ -89,8 +90,8 @@ License: You must have a valid license purchased only from https://themes.getboo
                                   <th>Código</th>
                                   <th>Descrição</th>
                                   <th>R$ Venda</th>
-                                  <th>Estoque Agora</th>
-                                  <th>Estoque Min.</th>
+                                  <th>Estoque saldo</th>
+                                  <th>Estoque min.</th>
                                   <th>Status</th>
                                   <th></th>
                                 </tr>
@@ -104,8 +105,8 @@ License: You must have a valid license purchased only from https://themes.getboo
                                     <td><?php echo $value['codigo'] ?></td>
             												<td><?php echo $value['descricao'] ?></td>
             												<td><?php echo 'R$ ' . number_format($value['preco_venda'], 2);  ?></td>
-                                    <td><?php echo $value['estoque_now'] ?></td>
-                                    <td><?php echo $value['estoque_min'] ?></td>
+                                    <td><?php echo $value['estoque_saldo'] ?></td>
+                                    <td><?php echo $value['estoque_minimo'] ?></td>
                         						<td><?php echo $value['status'] ?></td>
             												<td nowrap></td>
                                   </tr>

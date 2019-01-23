@@ -7,6 +7,7 @@ class Produto extends MY_Controller {
 		$this->data['subTitle'] = 'Produto';
 		$this->load->library('form_validation');
 		$this->load->model('Produto_model');
+		$this->load->model('Produto_categoria_model');
 		$this->load->helper('html_util_helper');
 		$this->load->helper('date_helper');
 	}
@@ -22,6 +23,7 @@ class Produto extends MY_Controller {
 	public function add()
 	{
 
+		$this->data['listaprodutoscategorias'] = $this->Produto_categoria_model->listaCategoria();
 		$this->load->view('produto/add_view',$this->data);
 
 	}
@@ -45,13 +47,14 @@ class Produto extends MY_Controller {
 
 		}else{
 
-			$form['estoque_now'] = $form['estoque_ini'];
+
 
 			$idProduto = $this->Produto_model->post($form);
 
 			// prepara array para dar input do novo produto no estoque
 			$inputProdutoEstoque = array("produto"=> $idProduto,
-			"input"=> (Integer) $form['estoque_ini'],
+			"input"=> (Integer) $form['estoque_saldo'],
+			"balance"=> (Integer) $form['estoque_saldo'],
 			"usuario"=> $this->session->usuario[0]['idperfil']);
 
 			$this->load->model('Estoque_model');
@@ -72,6 +75,8 @@ class Produto extends MY_Controller {
 	public function edit($id){
 
 		$this->data['produto'] = $this->Produto_model->listaProduto($id);
+		$this->data['listaprodutoscategorias'] = $this->Produto_categoria_model->listaCategoria();
+
 		$this->load->view('produto/edit_view',$this->data);
 
 	}
@@ -89,7 +94,6 @@ class Produto extends MY_Controller {
 				'msg' => ":( - Você preeencheu dados inválidos  !"
 			));
 				redirect($this->agent->referrer());
-
 
 		}else{
 
@@ -143,7 +147,7 @@ class Produto extends MY_Controller {
 	private function setRegras() {
 		$this->form_validation->set_rules('descricao', 'Descrição', 'required');
 		$this->form_validation->set_rules('preco_venda', 'Preço Venda', 'required');
-		$this->form_validation->set_rules('estoque_ini', 'Estoque inicial', 'required');
+		$this->form_validation->set_rules('estoque_saldo', 'Estoque saldo', 'required');
 	}
 	//=================================================================
 

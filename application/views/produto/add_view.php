@@ -72,7 +72,7 @@ License: You must have a valid license purchased only from https://themes.getboo
 
                             <!-- ================================================= -->
                             <div class="row" style="margin-bottom:15px">
-                              <div class="col-sm col-md"><a href="<?php echo base_url(); ?>Produto/index" class="btn btn-focus btn-wide">Voltar</a></div>
+                              <div class="col-sm col-md"><a href="<?php echo base_url(); ?>Produto/index" class="btn btn-focus btn-wide"><i class="fa fa-undo"></i> Voltar</a></div>
                             </div>
                             <!-- ================================================= -->
 
@@ -83,10 +83,30 @@ License: You must have a valid license purchased only from https://themes.getboo
                                   <div class="k-section__body">
 
                                     <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 col-form-label">Codigo  (*)</label>
+                                        <label class="col-xl-3 col-lg-3 col-form-label">Categoria (*)</label>
+                                        <div class="col-lg-9 col-xl-9">
+
+                                          <select class="form-control k_selectpicker" name="categoria" required>
+                                             <option value="">Selecione...</option>
+                  													<?php foreach ($listaprodutoscategorias as $key => $value): ?>
+                                              <optgroup label="<?php echo $value['descricao'] ?>" data-max-options="2">
+                                                 <?php foreach ($value['subcat'] as $key => $value_subcat): ?>
+                                                   <option value="<?php echo $value_subcat['id']  ?>"><?php echo $value_subcat['descricao'] ?></option>
+                                                 <?php endforeach; ?>
+                                              </optgroup>
+                                            <?php endforeach; ?>
+                  												</select>
+
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group row">
+                                        <label class="col-xl-3 col-lg-3 col-form-label">Código  (*)</label>
                                         <div class="col-lg-9 col-xl-6">
-                                          <input class="form-control" type="text" name="codigo" value="" autocomplete="off" required>
-                                          <span class="form-text text-muted">Codigo interno</span>
+                                          <input class="form-control" type="text" name="codigo" value="" autocomplete="off" required placeholder="CA0001">
+                                          <span class="form-text text-muted">Codigo interno  Ex. CA0000</span>
                                         </div>
                                     </div>
 
@@ -142,12 +162,12 @@ License: You must have a valid license purchased only from https://themes.getboo
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 col-form-label">Estoque (*)</label>
                                         <div class="col-lg-3 col-xl-3">
-                                          <input class="form-control" type="number" name="estoque_ini" value="" autocomplete="off" required>
-                                          <span class="form-text text-muted">Estoque inicial (*)</span>
+                                          <input class="form-control" type="number" name="estoque_saldo" value="" autocomplete="off" required>
+                                          <span class="form-text text-muted">Estoque saldo (*)</span>
                                         </div>
 
                                         <div class="col-lg-3 col-xl-3">
-                                          <input class="form-control" type="number" name="estoque_min" value="" autocomplete="off">
+                                          <input class="form-control" type="number" name="estoque_minimo" value="" autocomplete="off">
                                           <span class="form-text text-muted">Estoque mínimo</span>
                                         </div>
                                     </div>
@@ -160,10 +180,9 @@ License: You must have a valid license purchased only from https://themes.getboo
                               <div class="k-portlet__foot">
                                 <div class="k-form__actions">
                                   <div class="row">
-                                    <div class="col-lg-3 col-xl-3">
-                                    </div>
-                                    <div class="col-lg-9 col-xl-9">
-                                      <button type="submit" class="btn btn-success">Salvar</button>&nbsp;
+
+                                    <div class="col-lg-12 col-xl-12">
+                                      <button type="submit" class="btn btn-success  btn-wide">Salvar</button>&nbsp;
                                       <button type="reset" class="btn btn-secondary">Cancelar</button>
                                     </div>
                                   </div>
@@ -249,10 +268,15 @@ License: You must have a valid license purchased only from https://themes.getboo
     <!-- ============================= Script custom da pagina ========================== -->
     <script type="text/javascript">
 
+    // retorna as primeiras letras da categoria de produto para compor o codigo interno
+    $('select[name="categoria"]').on('change',function(){
+        $('input[name="codigo"]').val($('option:selected', this).html().slice(0,2).toUpperCase());
+    })
+
 
       $('input[name="codigo"]').on('focusout',function() {
 
-        var codigo = $('input[name="codigo"]').val();
+        var codigo = this.value;
 
         if(codigo != ''){
 
@@ -266,7 +290,7 @@ License: You must have a valid license purchased only from https://themes.getboo
                   type: 'post',
                   dataType: 'json',
                   success: function (data) {
-            
+
                     if(data.length != 0){
                       swal(
                         'Código interno duplicado !',
