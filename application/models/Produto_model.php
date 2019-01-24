@@ -21,43 +21,43 @@ class Produto_model extends MY_Model {
 
     }
 
-      return $result;
-
-    }
-
-
-    public function post($data){
-      $result = $this->db->insert($this->table, $data);
-
-      if($result){
-        return    $this->db->insert_id();
-      }
-
-    }
-
-
-    public function put($data){
-
-      $this->db->where('id', $data['id']);
-      $result = $this->db->update($this->table,$data);
-
-      return $result;
-
-    }
-
-
-    public function checkcodigo($data){
-
-    	if(!isset($data['id'])){
-            // não passa o id esta inserindo o produto
-            $result = $this->db->query("SELECT id, codigo, descricao FROM produto WHERE codigo = '{$data['codigo']}';")->result_array();
-        }else{
-            //passa  o id tem que verificar se outro produto não esta usando o mesmo codigo por isso id !=
-            $result = $this->db->query("SELECT id, codigo, descricao FROM produto WHERE codigo = '{$data['codigo']}' AND id != '{$data['id']}' ;")->result_array();
-        }
-        return $result;
-    }
-
-
+    return $result;
 
   }
+  
+
+  public function post($data){
+    $result = $this->db->insert($this->table, $data);
+
+    if($result){
+      return    $this->db->insert_id();
+    }
+
+  }
+
+
+  public function put($data){
+
+    $this->db->where('id', $data['id']);
+    $result = $this->db->update($this->table,$data);
+
+    return $result;
+
+  }
+
+
+  public function checkcodigo($data){
+
+    if(!isset($data['id'])){
+      // não passa o id esta inserindo o produto
+      $result = $this->db->query("SELECT id, codigo, descricao FROM produto WHERE codigo = '{$data['codigo']}';")->result_array();
+    }else{
+      //passa  o id tem que verificar se outro produto não esta usando o mesmo codigo por isso id !=
+      $result = $this->db->query("SELECT id, codigo, descricao FROM produto WHERE codigo = '{$data['codigo']}' AND id != '{$data['id']}' ;")->result_array();
+    }
+    return $result;
+  }
+
+
+
+}

@@ -21,29 +21,29 @@ class Cliente_model extends MY_Model {
 
     }
 
-      return $result;
-
-    }
-
-
-
-    public function post($data){
-
-      $result = $this->db->insert($this->table, $data);
-      return $result;
-    }
-
-
-    public function put($data){
-
-      $this->db->where('id', $data['id']);
-      $result = $this->db->update($this->table,$data);
-
-      return $result;
-
-    }
-
-
-
+    return $result;
 
   }
+
+
+
+  public function post($data){
+
+    $result = $this->db->insert($this->table, $data);
+    return $result;
+  }
+
+
+  public function put($data){
+
+    $this->db->where('id', $data['id']);
+    $result = $this->db->update($this->table,$data);
+
+    return $result;
+
+  }
+
+
+
+
+}

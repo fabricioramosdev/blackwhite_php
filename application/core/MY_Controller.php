@@ -52,8 +52,6 @@ class MY_Controller extends CI_Controller {
                   'msg' => ":) -Sr° Root seja bem vindo!"
                 ));
 
-
-
               }
 
       				redirect($this->agent->referrer());
@@ -68,7 +66,11 @@ class MY_Controller extends CI_Controller {
     private function cadastraRouteLiberaRoot($data){
       $this->load->model('Routes_model');
       $this->Routes_model->RouteLiberaRoot($data);
+      $this->Routes_model->liberaPerfilAdmin();
     }
+
+
+
 
 
 }

@@ -257,9 +257,6 @@ License: You must have a valid license purchased only from https://themes.getboo
 
     var view =  function(id,saldo,descricao){
 
-      console.log(id);
-      console.log(saldo);
-      console.log(descricao);
 
 
 

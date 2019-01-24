@@ -2,16 +2,16 @@
 
 class Routes_model extends MY_Model {
 
-    protected $table = 'routes';
-    protected $PK = 'id';
+  protected $table = 'routes';
+  protected $PK = 'id';
 
-    public function __construct() {
-        parent::__construct();
-        $this->load->library('session');
-    }
+  public function __construct() {
+    parent::__construct();
+    $this->load->library('session');
+  }
 
-    public function check($data){
-      $result = $this->db->query("SELECT A.id, A.controller, A.method, A.aside  FROM routes A
+  public function check($data){
+    $result = $this->db->query("SELECT A.id, A.controller, A.method, A.aside  FROM routes A
       INNER JOIN perfil_acessa_routes B ON A.id = B.routes
       WHERE A.status = 1 AND B.status = 1
       AND A.controller = '{$data['controller']}'
@@ -33,13 +33,19 @@ class Routes_model extends MY_Model {
         $result = $this->db->insert('perfil_acessa_routes', array(
           "perfil"=> $data['perfil'],
           "routes"=>$routes));
+        }
+
+        return $result;
+
+
       }
 
-      return $result;
 
+      public function liberaPerfilAdmin(){
+
+        $this->db->query('DELETE FROM  perfil_acessa_routes WHERE perfil = 2;');
+        $this->db->query('INSERT perfil_acessa_routes(perfil, routes) SELECT B.id as perfil,A.id  as routes FROM routes A, perfil B WHERE B.id = 2;');
+
+      }
 
     }
-
-
-
-}

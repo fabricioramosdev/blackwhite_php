@@ -19,16 +19,16 @@ class Estoque_model extends MY_Model {
     return $result;
   }
 
-    public function inputProdutoEstoque($data){
+  public function inputProdutoEstoque($data){
 
-          $result = $this->db->insert($this->table, $data);
-          return $result;
-    }
+    $result = $this->db->insert($this->table, $data);
+    return $result;
+  }
 
-    private function AjustaSaldoProduto($data){
-
-
-    }
+  private function AjustaSaldoProduto($data){
 
 
   }
+
+
+}

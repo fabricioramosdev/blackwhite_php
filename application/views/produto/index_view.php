@@ -72,8 +72,8 @@ License: You must have a valid license purchased only from https://themes.getboo
 
                             <!-- ================================================= -->
                             <div class="row" style="margin-bottom:20px">
-                              <div class="col-sm-6 col-md-6"><a href="<?php echo base_url(); ?>Produto/add" class="btn btn-success btn-wide">Adicionar Produto</a></div>
-                                <div class="col-sm-6 col-md-6 text-right"><a href="<?php echo base_url(); ?>Estoque/index" class="btn btn-info btn-wide">Estoque Rápido</a></div>
+                              <div class="col-sm-6 col-md-6  col-xl-6 col-6"><a href="<?php echo base_url(); ?>Produto/add" class="btn btn-success btn-wide">Adicionar Produto</a></div>
+                              <div class="col-sm-6 col-md-6 col-xl-6 col-6 text-right"><a href="<?php echo base_url(); ?>Estoque/index" class="btn btn-info btn-wide">Estoque Rápido</a></div>
                             </div>
                             <!-- ================================================= -->
 

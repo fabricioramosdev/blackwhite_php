@@ -2,13 +2,13 @@
 $k-media-breakpoints: (
     // Small screen / phone
     sm: 576px,
-    
+
     // Medium screen / tablet
     md: 768px,
-    
+
     // Large screen / desktop
     lg: 1024px,
-    
+
     // Extra large screen / wide desktop
     xl: 1200px,
 
@@ -87,7 +87,7 @@ $k-media-breakpoints: (
           font-weight: 500;
           font-size: 1.1rem; }
     .k-login-v1 .k-login-v1__body .k-login-v1__body-seaprator {
-      background-color: #3e4bb9;
+      background-color: #fffafa;;
       height: 450px;
       width: 1px;
       margin: auto; }
@@ -203,7 +203,7 @@ $k-media-breakpoints: (
     .k-login-v1 .k-login-v1__footer .k-login-v1__footer-info > a {
       font-weight: 500;
       font-size: 1rem;
-      color: #717ce6; }
+      color: #fffafa; }
   .k-login-v1 .k-login-v1__body .k-login-v1__body-wrapper .k-login-v1__body-container .k-login-v1__body-action .btn:hover {
     background-color: #ef005a; }
   .k-login-v1 .k-login-v1__body .k-login-v1__body-wrapper .k-login-v1__body-container .k-login-v1__body-action .btn:hover {

@@ -5,7 +5,7 @@ var KWizardDemo = function () {
     var formEl;
     var validator;
     var wizard;
-    
+
     // Private functions
     var initWizard = function () {
         // Initialize form wizard
@@ -22,7 +22,7 @@ var KWizardDemo = function () {
 
         // Change event
         wizard.on('change', function(wizard) {
-            KUtil.scrollTop();    
+            KUtil.scrollTop();
         });
     }
 
@@ -35,15 +35,15 @@ var KWizardDemo = function () {
             rules: {
                 //= Client Information(step 1)
                 username: {
-                    required: true 
+                    required: true
                 },
                 email: {
                     required: true,
-                    email: true 
-                },       
+                    email: true
+                },
                 password: {
                     required: true,
-                },     
+                },
 
                 //= Client Information(step 2)
                 // Profile Details
@@ -52,35 +52,35 @@ var KWizardDemo = function () {
                 },
                 address2: {
                     required: true,
-                }, 
+                },
                 // Mailing Address
                 city: {
                     required: true,
-                }, 
+                },
                 zip: {
                     required: true,
-                }, 
+                },
                 state: {
                     required: true,
-                }, 
+                },
                 country: {
                     required: true,
-                }, 
+                },
 
                 //= Client Information(step 3)
                 // Company Details
                 company_name: {
                     required: true,
-                }, 
+                },
                 company_id: {
                     required: true,
-                }, 
+                },
                 company_email: {
                     required: true,
-                }, 
+                },
                 company_tel: {
                     required: true,
-                },               
+                },
                 'account_communication[]': {
                     required: true
                 },
@@ -119,16 +119,16 @@ var KWizardDemo = function () {
                 },
                 accept: {
                     required: "You must accept the Terms and Conditions agreement!"
-                } 
+                }
             },
-            
-            // Display error  
-            invalidHandler: function(event, validator) {     
+
+            // Display error
+            invalidHandler: function(event, validator) {
                 KUtil.scrollTop();
 
                 swal({
-                    "title": "", 
-                    "text": "There are some errors in your submission. Please correct them.", 
+                    "title": "",
+                    "text": "There are some errors in your submission. Please correct them.",
                     "type": "error",
                     "confirmButtonClass": "btn btn-secondary m-btn m-btn--wide"
                 });
@@ -136,9 +136,9 @@ var KWizardDemo = function () {
 
             // Submit valid form
             submitHandler: function (form) {
-                
+
             }
-        });   
+        });
     }
 
     var initSubmit = function() {
@@ -150,7 +150,7 @@ var KWizardDemo = function () {
             if (validator.form()) {
                 // See: src\js\framework\base\app.js
                 mApp.progress(btn);
-                //mApp.block(formEl); 
+                //mApp.block(formEl);
 
                 // See: http://malsup.com/jquery/form/#ajaxSubmit
                 formEl.ajaxSubmit({
@@ -159,8 +159,8 @@ var KWizardDemo = function () {
                         //mApp.unblock(formEl);
 
                         swal({
-                            "title": "", 
-                            "text": "The application has been successfully submitted!", 
+                            "title": "",
+                            "text": "The application has been successfully submitted!",
                             "type": "success",
                             "confirmButtonClass": "btn btn-secondary"
                         });
@@ -176,13 +176,13 @@ var KWizardDemo = function () {
             wizardEl = KUtil.get('k_wizard_v2');
             formEl = $('#k_form');
 
-            initWizard(); 
-            initValidation();
+            initWizard();
+          //  initValidation();
             initSubmit();
         }
     };
 }();
 
-jQuery(document).ready(function() {    
+jQuery(document).ready(function() {
     KWizardDemo.init();
 });

@@ -131,10 +131,7 @@ License: You must have a valid license purchased only from https://themes.getboo
 
 						<!--begin::Section-->
 
-						<!--begin::Separator-->
-						<div class="k-login-v1__body-seaprator"></div>
 
-						<!--end::Separator-->
 
 						<!--begin::Wrapper-->
 						<div class="k-login-v1__body-wrapper">
@@ -161,7 +158,7 @@ License: You must have a valid license purchased only from https://themes.getboo
 
 												<option  value="<?php echo $value['hash'] ?>"><?php echo $value['descricao'] ?></option>
 											<?php
-											
+
 										 endforeach; ?>
 										</select>
 									</div>
@@ -171,34 +168,11 @@ License: You must have a valid license purchased only from https://themes.getboo
 								<!--	<a href="#" class="k-link">
 										<span>Forgot Password ?</span>
 									</a> -->
-									<button type="submit" class="btn btn-pill btn-elevate">Login </button>
+									<button type="submit" class="btn btn-pill btn-elevate ">Login </button>
 								</div>
 								<!--end::Action-->
 								</form>
 								<!--end::Form-->
-
-								<!--begin::Divider-->
-								<div class="k-login-v1__body-divider">
-
-								</div>
-
-								<!--end::Divider-->
-
-								<!--begin::Options-->
-								<div class="k-login-v1__body-options">
-									<!-- <a href="#" class="btn">
-										<i class="fab fa-facebook-f"></i>
-										Fcebook
-									</a>
-									<a href="#" class="btn">
-										<i class="fab fa-twitter"></i>
-										Twitter
-									</a>
-									<a href="#" class="btn">
-										<i class="fab fa-google"></i>
-										Google
-									</a> -->
-								</div>
 
 								<!--end::Options-->
 							</div>
@@ -215,11 +189,6 @@ License: You must have a valid license purchased only from https://themes.getboo
 				<!--begin::Item-->
 				<div class="k-grid__item">
 					<div class="k-login-v1__footer">
-						<!--<div class="k-login-v1__footer-link">
-							<a href="#" class="k-link">Privacy</a>
-							<a href="#" class="k-link">Legal</a>
-							<a href="#" class="k-link">Contact</a>
-						</div>-->
 						<div class="k-login-v1__footer-info">
 							<a href="#" class="k-link"><?php echo $appname; ?></a>
 						</div>

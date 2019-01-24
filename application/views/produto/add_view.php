@@ -268,9 +268,17 @@ License: You must have a valid license purchased only from https://themes.getboo
     <!-- ============================= Script custom da pagina ========================== -->
     <script type="text/javascript">
 
+
+    $('input[name="codigo"]').inputmask("mask", {
+        "mask": "[AA]9999"
+    });
+
+
+
     // retorna as primeiras letras da categoria de produto para compor o codigo interno
     $('select[name="categoria"]').on('change',function(){
         $('input[name="codigo"]').val($('option:selected', this).html().slice(0,2).toUpperCase());
+        $('input[name="codigo"]').focus();
     })
 
 
