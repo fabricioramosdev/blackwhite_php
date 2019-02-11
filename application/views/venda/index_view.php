@@ -135,15 +135,20 @@ License: You must have a valid license purchased only from https://themes.getboo
     <!-- end::Scripts -->
 
     <!--begin::Page Vendors -->
-    <script src="<?php echo base_url(); ?>assets/demo/default/custom/components/keen-wizard/wizard-demo-v2.js" type="text/javascript"></script>
+    <script src="<?php echo base_url(); ?>assets/vendors/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
+    <script src="<?php echo base_url(); ?>assets/demo/default/custom/components/extended/sweetalert2.js" type="text/javascript"></script>
+
+    <!--begin::Page Scripts -->
+    <script src="<?php echo base_url(); ?>assets/demo/default/custom/components/forms/widgets/bootstrap-touchspin.js" type="text/javascript"></script>
+    <script src="<?php echo base_url(); ?>assets/demo/default/custom/custom/venda/venda.js" type="text/javascript"></script>
+    <script src="<?php echo base_url(); ?>assets/demo/default/custom/components/forms/widgets/bootstrap-select.js" type="text/javascript"></script>
+		<!--end::Page Scripts -->
 
     <!--end::Page Vendors -->
 
     <!-- ============================= Script custom da pagina ========================== -->
 
     <script type="text/javascript">
-
-
 
 
     </script>
@@ -160,7 +165,12 @@ License: You must have a valid license purchased only from https://themes.getboo
 
     <style media="screen">
     .k-widget-3 .k-widget-3__content{
-      padding: 2rem;
+      padding: 2em;
+
+
+    }
+    .k-widget-3__content-info{
+          font-size:10px
     }
     </style>
 

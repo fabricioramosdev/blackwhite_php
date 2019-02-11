@@ -32,7 +32,7 @@
         </div>
         <div class="k-search__item">
           <div class="k-search__item-img k-search__item-img--file">
-            <img src="<?php echo base_url(); ?>assets/media/files/pdf.svg" alt="" />
+
           </div>
           <div class="k-search__item-wrapper">
             <a href="#" class="k-search__item-title">
@@ -74,7 +74,7 @@
         </div>
         <div class="k-search__item">
           <div class="k-search__item-img">
-            <img src="<?php echo base_url(); ?>assets/media/users/300_14.jpg" alt="" />
+
           </div>
           <div class="k-search__item-wrapper">
             <a href="#" class="k-search__item-title">

@@ -21,7 +21,7 @@ class Cliente extends MY_Controller {
 
 	public function add()
 	{
-		
+
 		$this->load->view('cliente/add_view',$this->data);
 
 	}
@@ -30,6 +30,19 @@ class Cliente extends MY_Controller {
 	public function post(){
 
 		$form = $this->input->post();
+
+		$form['whatsapp'] = '';
+
+		if( $form['telCel'] != ''){
+			$whastapp = $form['telCel'];
+			$whastapp = str_replace('(','',$whastapp);
+			$whastapp = str_replace(')','',$whastapp);
+			$whastapp = str_replace('-','',$whastapp);
+			$whastapp = str_replace(' ','',$whastapp);
+			$whastapp = '055'.trim($whastapp);
+			$whastapp = "https://api.whatsapp.com/send?phone={$whastapp}&text=Olá,{$form['nome']}";
+			$form['whatsapp'] =  $whastapp;
+		}
 
 		$this->setRegras();
 		if ($this->form_validation->run() == FALSE)
@@ -80,6 +93,18 @@ class Cliente extends MY_Controller {
 	public function put(){
 
 		$form =  $this->input->post();
+		$form['whatsapp'] = '';
+
+		if( $form['telCel'] != ''){
+			$whastapp = $form['telCel'];
+			$whastapp = str_replace('(','',$whastapp);
+			$whastapp = str_replace(')','',$whastapp);
+			$whastapp = str_replace('-','',$whastapp);
+			$whastapp = str_replace(' ','',$whastapp);
+			$whastapp = '055'.trim($whastapp);
+			$whastapp = "https://api.whatsapp.com/send?phone={$whastapp}&text=Olá,{$form['nome']}";
+			$form['whatsapp'] =  $whastapp;
+		}
 
 		$this->setRegras();
 		if ($this->form_validation->run() == FALSE)

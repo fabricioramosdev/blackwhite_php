@@ -61,6 +61,63 @@ License: You must have a valid license purchased only from https://themes.getboo
                   <div class="k-portlet">
                     <div class="k-portlet__head">
                       <div class="k-portlet__head-label">
+                        <h3 class="k-portlet__head-title">Profile access routes</h3>
+                      </div>
+                    </div>
+                    <!--begin::Form-->
+                    <div class="k-portlet__body">
+
+
+                      <!--begin: Datatable -->
+                      <table class="table table-striped- table-bordered table-hover table-checkable" id="k_table_2">
+                        <thead>
+                          <tr>
+                            <th>Perfil</th>
+                              <th>PID</th>
+                            <th>Label</th>
+                            <th>Controller</th>
+                            <th>Method</th>
+                            <th>Assid</th>
+                            <th></th>
+
+                          </tr>
+                        </thead>
+                        <tbody>
+
+
+                          <?php foreach ($perfillistaacessos as $key => $value): ?>
+                            <tr>
+                              <td><?php echo $value['perfil'] ?></td>
+                              <td><?php echo $value['pid'] ?></td>
+                              <td><?php echo $value['label'] ?></td>
+                              <td><?php echo $value['controller'] ?></td>
+                              <td><?php echo $value['method'] ?></td>
+                              <td><?php echo $value['aside'] ?></td>
+                            			<td nowrap></td>
+                            </tr>
+                          <?php endforeach; ?>
+
+                        </tbody>
+                      </table>
+
+                      <!--end: Datatable -->
+
+
+                    </div>
+                    <div class="k-portlet__foot">
+                      <div class="k-form__actions">
+                      </div>
+                    </div>
+                    <!--end::Form-->
+                  </div>
+
+                  <!--end::Portlet-->
+
+
+                  <!--begin::Portlet-->
+                  <div class="k-portlet">
+                    <div class="k-portlet__head">
+                      <div class="k-portlet__head-label">
                         <h3 class="k-portlet__head-title">Profile root</h3>
                       </div>
                     </div>
@@ -95,64 +152,6 @@ License: You must have a valid license purchased only from https://themes.getboo
                       </div>
                     </form>
 
-                    <!--end::Form-->
-                  </div>
-
-                  <!--end::Portlet-->
-
-
-
-
-
-                  <!--begin::Portlet-->
-                  <div class="k-portlet">
-                    <div class="k-portlet__head">
-                      <div class="k-portlet__head-label">
-                        <h3 class="k-portlet__head-title">Profile access routes view</h3>
-                      </div>
-                    </div>
-                    <!--begin::Form-->
-                    <div class="k-portlet__body">
-
-
-                      <!--begin: Datatable -->
-                      <table class="table table-striped- table-bordered table-hover table-checkable" id="k_table_2">
-                        <thead>
-                          <tr>
-                            <th>Perfil</th>
-                              <th>PID</th>
-                            <th>Label</th>
-                            <th>Controller</th>
-                            <th>Method</th>
-                            <th>Assid</th>
-
-                          </tr>
-                        </thead>
-                        <tbody>
-
-
-                          <?php foreach ($perfillistaacessos as $key => $value): ?>
-                            <tr>
-                              <td><?php echo $value['perfil'] ?></td>
-                              <td><?php echo $value['pid'] ?></td>
-                              <td><?php echo $value['label'] ?></td>
-                              <td><?php echo $value['controller'] ?></td>
-                              <td><?php echo $value['method'] ?></td>
-                              <td><?php echo $value['aside'] ?></td>
-                            </tr>
-                          <?php endforeach; ?>
-
-                        </tbody>
-                      </table>
-
-                      <!--end: Datatable -->
-
-
-                    </div>
-                    <div class="k-portlet__foot">
-                      <div class="k-form__actions">
-                      </div>
-                    </div>
                     <!--end::Form-->
                   </div>
 
@@ -360,6 +359,27 @@ License: You must have a valid license purchased only from https://themes.getboo
         pagingType: 'full_numbers',
         columnDefs: [
           {
+            targets: -1,
+            title: '',
+            orderable: false,
+            render: function(data, type, full, meta) {
+
+              return `
+              <span class="dropdown">
+              <a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown" aria-expanded="true">
+              <i class="la la-ellipsis-h"></i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right">
+              <a class="dropdown-item" href="javascript:;" onClick="remover('${full[1]}')"><i class="la la-edit"></i> Deletar Acesso</a>
+
+              </div>
+              </span>
+              <a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="View">
+              <i class="la la-edit"></i>
+              </a>`;
+            },
+          },
+          {
             targets: 5,
             render: function(data, type, full, meta) {
               var status = {
@@ -557,6 +577,60 @@ License: You must have a valid license purchased only from https://themes.getboo
 
             e.modal('toggle');
           }
+
+
+            var remover =  function(id){
+
+                  let pid = id.split('-');
+
+                  swal({
+                      title: 'Você tem certeza?',
+                      text: "Você não poderá reverter isso!",
+                      type: 'warning',
+                      showCancelButton: true,
+                      confirmButtonText: 'Sim, exclua!',
+                      cancelButtonText: 'Não, cancelar!',
+                      reverseButtons: true
+                  }).then(function(result){
+                      if (result.value) {
+
+
+                            //===============================================
+                                $.ajax(
+                                  {
+                                    url: app_u +'Root/deletarAcesso',
+                                    data: {
+                                      perfil: pid[0],
+                                      routes: pid[1]
+                                    },
+                                    type: 'post',
+                                    dataType: 'json',
+                                    complete : function (data) {
+                                      swal(
+                                        'Deletado!',
+                                        'Seu registro foi excluído.',
+                                        'success'
+                                      );
+                                      location.reload();
+                                    }
+                                  }
+                                );
+                          //===============================================
+                      } else if (result.dismiss === 'cancel') {
+                          swal(
+                              'Cancelado',
+                              'Seu registro  está seguro :)',
+                              'error'
+                          )
+                      }
+                  });
+
+
+
+
+
+
+            }
 
 
           </script>

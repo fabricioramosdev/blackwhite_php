@@ -68,7 +68,7 @@ class Root_model extends MY_Model {
       public function clonarAcesso($data){
 
         $this->db->query("DELETE FROM  perfil_acessa_routes WHERE perfil = '{$data['to']}' ;");
-        $this->db->query("INSERT perfil_acessa_routes(perfil, routes) SELECT '{$data['to']}',routes FROM bwdev.perfil_acessa_routes WHERE perfil = '{$data['in']}'  ;");
+        $this->db->query("INSERT perfil_acessa_routes(perfil, routes) SELECT '{$data['to']}',routes FROM perfil_acessa_routes WHERE perfil = '{$data['in']}'  ;");
 
       }
 

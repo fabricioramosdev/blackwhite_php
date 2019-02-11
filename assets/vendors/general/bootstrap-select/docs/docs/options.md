@@ -2,7 +2,7 @@
 
 ---
 
-Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in 
+Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in
 `data-style=""` or `data-selected-text-format="count"`.
 
 <table class="table table-bordered table-striped">
@@ -37,7 +37,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     <td><code>function</code></td>
     <td>
       <p>Sets the format for the text displayed when selectedTextFormat is <code>count</code> or <code>count > #</code>. {0} is the selected amount. {1} is total available for selection.</p>
-      <p>When set to a function, the first parameter is the number of selected options, and the second is the total number of 
+      <p>When set to a function, the first parameter is the number of selected options, and the second is the total number of
       options. The function must return a string.</p>
     </td>
   </tr>

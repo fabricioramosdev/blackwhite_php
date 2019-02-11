@@ -94,7 +94,7 @@ License: You must have a valid license purchased only from https://themes.getboo
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-lg-3 col-form-label">CPF (*)</label>
                                         <div class="col-lg-9 col-xl-6">
-                                          <input class="form-control" type="number" name="cpf" value="" autocomplete="off" required>
+                                          <input class="form-control" type="text" name="cpf" value="" autocomplete="off" required>
                                           <span class="form-text text-muted">CPF somente números</span>
                                         </div>
                                     </div>
@@ -291,6 +291,11 @@ License: You must have a valid license purchased only from https://themes.getboo
       $('input[name="telOut"]').inputmask("mask", {
           "mask": "(99)999999999"
       });
+
+      $('input[name="cpf"]').inputmask("mask", {
+          "mask": "999.999.999-99"
+      });
+
 
 
 
