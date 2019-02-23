@@ -258,8 +258,6 @@ License: You must have a valid license purchased only from https://themes.getboo
     var view =  function(id,saldo,descricao){
 
 
-
-
           var e = jQuery(`<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <form  class="k-form k-form--label-right"  action="<?php echo base_url() ?>Estoque/put" method="post">

@@ -23,10 +23,37 @@ class Venda_model extends MY_Model {
 
   }
 
+
+
   public function search_produto($data){
     $result = $this->db->query("SELECT id as value, categoria, codigo, descricao as label, detalhe, preco_venda, preco_custo, estoque_saldo, estoque_minimo, status, registro, md5(id) as hash FROM produto WHERE codigo LIKE  '%{$data}%'  OR  descricao LIKE '%{$data}%' AND status = 1 AND estoque_saldo > 0;")->result_array();
     return $result;
   }
+
+
+
+  public function save_venda($data){
+
+        $result = $this->db->insert('venda', $data);
+        if($result){
+          return    $this->db->insert_id();
+        }
+
+  }
+
+  public function save_itens($data){
+
+      $result = $this->db->insert_batch('venda_itens', $data);
+
+  }
+
+  public function save_parcelas($data){
+
+      $result = $this->db->insert_batch('venda_prazo', $data);
+
+  }
+
+
 
 
 }

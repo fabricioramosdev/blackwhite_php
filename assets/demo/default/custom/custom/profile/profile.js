@@ -1,4 +1,4 @@
-"use strict";
+
 // Class definition
 var KProfile = function() {
 
@@ -16,7 +16,7 @@ var KProfile = function() {
     return {
         // Init demos
         init: function() {
-           initStatisticCharts(); 
+           initStatisticCharts();
            initProfileAvatar();
         }
     };

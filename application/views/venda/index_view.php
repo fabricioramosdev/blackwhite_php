@@ -142,18 +142,16 @@ License: You must have a valid license purchased only from https://themes.getboo
     <script src="<?php echo base_url(); ?>assets/demo/default/custom/components/forms/widgets/bootstrap-touchspin.js" type="text/javascript"></script>
     <script src="<?php echo base_url(); ?>assets/demo/default/custom/custom/venda/venda.js" type="text/javascript"></script>
     <script src="<?php echo base_url(); ?>assets/demo/default/custom/components/forms/widgets/bootstrap-select.js" type="text/javascript"></script>
-		<!--end::Page Scripts -->
+	  <script src="<?php echo base_url(); ?>assets/demo/default/custom/components/forms/widgets/bootstrap-datepicker.js" type="text/javascript"></script>
+    <!--end::Page Scripts -->
 
     <!--end::Page Vendors -->
 
     <!-- ============================= Script custom da pagina ========================== -->
-
     <script type="text/javascript">
 
 
     </script>
-
-
     <!-- ============================= Script custom da pagina ========================== -->
 
     <!--================================================ -->
@@ -162,7 +160,7 @@ License: You must have a valid license purchased only from https://themes.getboo
     <!--end::Script Alert -->
     <!--================================================ -->
 
-
+    <link href="<?php echo base_url(); ?>assets/custom/invoice/invoice-v2.css" rel="stylesheet" type="text/css" />
     <style media="screen">
     .k-widget-3 .k-widget-3__content{
       padding: 2em;

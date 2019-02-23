@@ -2,13 +2,13 @@
 $k-media-breakpoints: (
     // Small screen / phone
     sm: 576px,
-    
+
     // Medium screen / tablet
     md: 768px,
-    
+
     // Large screen / desktop
     lg: 1024px,
-    
+
     // Extra large screen / wide desktop
     xl: 1200px,
 
@@ -81,7 +81,7 @@ $k-media-breakpoints: (
       margin: 2rem 5rem; } }
 
 .k-invoice-v2 .k-invoice-v2__details {
-  padding: 2rem 20rem 10rem;
+  padding: 2rem 20rem 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
