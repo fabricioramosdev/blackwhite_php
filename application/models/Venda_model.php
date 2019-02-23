@@ -53,6 +53,39 @@ class Venda_model extends MY_Model {
 
   }
 
+  public function baixa_itens($data){
+
+    $result = $this->db->query("UPDATE  produto SET estoque_saldo = (estoque_saldo-{$data['produto_quantidade']}) WHERE id = {$data['produto_id']};");
+    return $result;
+
+  }
+
+
+  public function pdf_venda($data){
+
+     $result = $this->db->query("SELECT id, usuario_id, cliente_id, cliente_nome, pagamento_id, pagamento_descricao, pagamento_parcelas,
+ pagamento_vencimento, desconto_valor, desconto_taxa, desconto_valor_sem_desconto, desconto_valor_com_desconto, venda_total,
+ date_format(registro,'%d/%m/%Y') as registro, status FROM venda where id = {$data}")->result_array();
+
+
+     foreach ($result as &$item) {
+       $item ["itens"] = $this->pdf_itens($item ['id']);
+       $item["parcelas"] =  $this->pdf_parcelas($item ['id']);
+     }
+     return $result;
+
+  }
+
+  public function pdf_itens($data){
+    $result = $this->db->query("SELECT id, produto_id, produto_codigo, produto_descricao, produto_preco_venda, produto_quantidade, venda_id FROM venda_itens where venda_id = {$data}; ")->result_array();
+    return $result;
+  }
+
+  public function pdf_parcelas($data){
+    $result = $this->db->query("SELECT id, cliente_id, parcela, data_parcela, valor_parcela, status, venda_id FROM bwdev.venda_prazo where venda_id = {$data}; ")->result_array();
+    return $result;
+
+  }
 
 
 

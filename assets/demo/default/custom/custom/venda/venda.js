@@ -51,6 +51,42 @@ var salvar_venda = function(){
       success: function (data) {
         if(data){
 
+          if(parseInt(carrinho_compras[2]['pagamento']['forma']) == 4){
+            // abre opção para gerar PDF
+            let venda_id = parseInt(data);
+
+            swal({
+                title: 'Documento de venda.',
+                text: "Você deseja gerar documento venda ?",
+                type: 'success',
+                showCancelButton: true,
+                confirmButtonText: 'Sim, gerar!',
+                cancelButtonText: 'Não, gerar!',
+                reverseButtons: true
+            }).then(function(result){
+                if (result.value) {
+                      //===============================================
+                      window.open(
+                      app_u+"Venda/vdoc/"+venda_id,
+                      '_blank'
+                      );
+                     //===============================================
+                     // perguntar se btn foi gerado com sucesso
+                     location.reload();
+                } else if (result.dismiss === 'cancel') {
+                    swal(
+                        'Cancelado',
+                        'Seu documento não foi gerado :)',
+                        'error'
+                    );
+                    location.reload();
+                }
+            });
+
+          }else{
+            location.reload();
+          }
+
 
         }
       }

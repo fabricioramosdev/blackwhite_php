@@ -108,11 +108,13 @@ class Venda extends MY_Controller {
 				'venda_id'=>$venda_id
 			);
 
+
 			array_push($lista_itens,$item);
+			$this->Venda_model->baixa_itens($item);
+
 		}
 
 		$result = $this->Venda_model->save_itens($lista_itens);
-
 
 		// verifica se venda foi parcelada
 		if($venda_forma_pagamento->id == 4 && (isset($venda_forma_pagamento->parcelas))){
@@ -146,12 +148,170 @@ class Venda extends MY_Controller {
 
 		}
 
-		echo json_encode(true);
+		$this->session->set_flashdata('notfy',array(
+			'type'  => "success",
+			'title' => "Sucesso !!",
+			'msg' => ":) - Venda salva com sucesso!"
+		));
 
+		echo json_encode($venda_id);
 
 	}
 
+	public function vdoc($id){
 
+
+		$venda = $this->Venda_model->pdf_venda($id);
+
+
+
+		$this->load->library('Pdf_Libary');
+		$hash = md5($venda[0]['id']);
+		$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+		$pdf->SetCreator(PDF_CREATOR);
+		$pdf->SetTitle("vdoc_{$hash}");
+
+
+		$PDF_HEADER_LOGO = base_url() . 'assets/media/logos/logo-4-bw.png';
+		$PDF_HEADER_LOGO_WIDTH = 20;
+		$PDF_HEADER_TITLE =  'DOCUMENTO VENDA - N.'.$id;
+		$PDF_HEADER_SUBTITLE = "Cliente: {$venda[0]['cliente_nome']}\nData compra: {$venda[0]['registro']}";
+
+		// set default header data
+		$pdf->SetHeaderData($PDF_HEADER_LOGO,$PDF_HEADER_LOGO_WIDTH,$PDF_HEADER_TITLE,$PDF_HEADER_SUBTITLE);
+
+
+		// set header and footer fonts
+		$pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+		$pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+
+		// set default monospaced font
+		$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+
+		// set margins
+		$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+		$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+		$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+
+		// set auto page breaks
+		$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+
+		// set image scale factor
+		$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+
+		// set some language-dependent strings (optional)
+		if (@file_exists(dirname(__FILE__) . '/lang/eng.php')) {
+			require_once(dirname(__FILE__) . '/lang/eng.php');
+			$pdf->setLanguageArray($l);
+		}
+
+		// ---------------------------------------------------------
+		// set font
+		$pdf->SetFont('dejavusans', '', 10, '', false);
+
+		// add a page
+		$pdf->AddPage();
+
+
+		$html_iten = '';
+		foreach ($venda[0]['itens'] as $key => $value) {
+			$html_iten .= "<tr>
+			<td>{$value['produto_descricao']}</td>
+			<td>{$value['produto_quantidade']}</td>
+			<td>R$ {$value['produto_preco_venda']}</td>
+			</tr>";
+
+		}
+
+	 $html_1 = <<<EOD
+	 <h3>Itens na venda:</h3>
+	 <table style="width: 600px" border="1" cellspacing="1" cellpadding="3">
+	 <tbody>
+	 <tr style="background-color: #dedbd0;">
+	 <td style="width: 200px;"><strong>Descri&ccedil;&atilde;o</strong></td>
+	 <td style="width: 200px;"><strong>Quantidade</strong></td>
+	 <td style="width: 200px;"><strong>Pre&ccedil;o</strong></td>
+	 </tr>
+	 	{$html_iten}
+	 <tr style="background-color: #dedbd0;">
+	 <td style="width: 600px;" colspan="3">
+	 <h3 style="text-align: center;">Total: R$ {$venda[0]['venda_total']}</h3>
+	 </td>
+	 </tr>
+	 </tbody>
+	 </table>
+EOD;
+
+
+
+	$html_parcela = '';
+	foreach ($venda[0]['parcelas'] as $key => $value) {
+		$vencimento  = to_brazilian($value['data_parcela']);
+		$html_parcela .= "<tr>
+		<td>{$value['parcela']}</td>
+		<td>{$vencimento}</td>
+		<td>R$ {$value['valor_parcela']}</td>
+		<td>___/___/_____ Visto:______________</td>
+		</tr>";
+
+	}
+
+ $html_2 = <<<EOD
+ <h3>Parcelas:</h3>
+ <table style="width: 600px" border="1" cellspacing="1" cellpadding="3">
+ <tbody>
+ <tr style="background-color: #dedbd0;">
+ <td style="width: 80px;"><strong>Parcela</strong></td>
+ <td style="width: 150px;"><strong>Data Venc.</strong></td>
+ <td style="width: 150px;"><strong>R$ Valor</strong></td>
+ <td style="width: 220px;"><strong>Visto</strong></td>
+ </tr>
+	{$html_parcela}
+
+ </tbody>
+ </table>
+EOD;
+
+
+$traco = '';
+for ($i = -5; $i <= strlen($venda[0]['cliente_nome']); $i++) {
+
+	$traco .= '_';
+}
+$agora = date('d/m/Y');
+
+ $html_3 = <<<EOD
+<table style="width: 600px; height: 44px;">
+<tbody>
+<tr>
+<td style="width: 200px;">&nbsp;</td>
+<td style="width: 400px;">{$traco}</td>
+</tr>
+<tr>
+<td style="width: 200px;">&nbsp;</td>
+<td style="width: 400px;"><strong>{$venda[0]['cliente_nome']}</strong><br> {$agora}</td>
+</tr>
+</tbody>
+</table>
+EOD;
+
+
+$pdf->writeHTMLCell(0, 0, '', '', $html_1, 0, 1, 0, true, '', true);
+$pdf->ln(5);
+$pdf->writeHTMLCell(0, 0, '', '', $html_2, 0, 1, 0, true, '', true);
+$pdf->ln(10);
+$pdf->SetY(-70);
+$pdf->writeHTMLCell(0, 0, '', '', $html_3, 0, 1, 0, true, '', true);
+$pdf->ln();
+
+//========= force print dialog
+$js = 'print(true);';
+//========== set javascript
+$pdf->IncludeJS($js);
+//========== I =  abre no navegador, D = faz o download
+$pdf->Output("vdoc_{$hash}.pdf", 'I');
+
+	}
 
 
 
