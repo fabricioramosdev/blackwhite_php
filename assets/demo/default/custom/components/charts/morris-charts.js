@@ -3,7 +3,7 @@
 var KMorrisChartsDemo = function() {
 
     // Private functions
-    
+
     var demo1 = function() {
         // LINE CHART
         new Morris.Line({

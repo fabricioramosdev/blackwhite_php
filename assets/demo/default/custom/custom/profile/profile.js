@@ -23,6 +23,6 @@ var KProfile = function() {
 }();
 
 // Class initialization on page load
-jQuery(document).ready(function() {
+$(document).ready(function() {
     KProfile.init();
 });

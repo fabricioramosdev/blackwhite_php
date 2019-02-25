@@ -65,10 +65,7 @@
 
 
   <!--begin::Page Scripts -->
-  <script src="<?php echo base_url(); ?>assets/app/scripts/custom/dashboard.js" type="text/javascript"></script>
-  <script src="<?php echo base_url(); ?>assets/demo/default/custom/custom/profile/profile.js" type="text/javascript"></script>
-
-
+  <!-- <script src="<?php echo base_url(); ?>assets/demo/default/custom/custom/profile/profile.js" type="text/javascript"></script> -->
   <!--end::Page Scripts -->
 
 

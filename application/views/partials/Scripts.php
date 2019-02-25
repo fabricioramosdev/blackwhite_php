@@ -35,7 +35,7 @@
 <script src="<?php echo base_url(); ?>assets/vendors/general/autosize/dist/autosize.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/vendors/general/clipboard/dist/clipboard.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/vendors/general/dropzone/dist/dropzone.js" type="text/javascript"></script>
-<script src="<?php echo base_url(); ?>assets/vendors/general/summernote/dist/summernote.js" type="text/javascript"></script>
+<!-- <script src="<?php echo base_url(); ?>assets/vendors/general/summernote/dist/summernote.js" type="text/javascript"></script> -->
 <script src="<?php echo base_url(); ?>assets/vendors/general/markdown/lib/markdown.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/vendors/general/bootstrap-markdown/js/bootstrap-markdown.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/vendors/custom/theme/framework/vendors/bootstrap-markdown/init.js" type="text/javascript"></script>
@@ -64,18 +64,65 @@
 <script src="<?php echo base_url(); ?>assets/demo/default/base/scripts.bundle.js" type="text/javascript"></script>
 
 <!--end::Global Theme Bundle -->
-
 <!--begin::Page Vendors -->
 <script src="<?php echo base_url(); ?>assets/vendors/custom/fullcalendar/fullcalendar.bundle.js" type="text/javascript"></script>
 
 <!--end::Page Vendors -->
 
-<!--begin::Page Scripts -->
-<script src="<?php echo base_url(); ?>assets/app/scripts/custom/dashboard.js" type="text/javascript"></script>
-
-<!--end::Page Scripts -->
 
 <!--begin::Global App Bundle -->
 <script src="<?php echo base_url(); ?>assets/app/scripts/bundle/app.bundle.js" type="text/javascript"></script>
 
 <!--end::Global App Bundle -->
+
+<!--begin::Page Scripts -->
+ <!-- <script src="<?php echo base_url(); ?>assets/app/scripts/custom/dashboard.js" type="text/javascript"></script> -->
+ <!-- <script src="<?php echo base_url(); ?>assets/demo/default/custom/components/charts/morris-charts.js" type="text/javascript"></script> -->
+<!--end::Page Scripts -->
+
+<script type="text/javascript">
+
+var KMorrisCharts = function() {
+
+    // Private functions
+
+
+    var faturamento_mensal = function() {
+        // BAR CHART
+        new Morris.Bar({
+            element: 'k_morris_faturamento_mensal',
+            data:<?php echo json_encode($chart_faturamento_mensal) ?>,
+            xkey: 'y',
+            ykeys: ['a'],
+            labels: ['Faturamento em R$'],
+            barColors: ['#79BD8F']
+        });
+    }
+
+
+    var vendas_forma_pagamento = function() {
+        // PIE CHART
+        new Morris.Donut({
+            element: 'k_morris_4',
+            data: <?php echo json_encode($chart_vendas_forma_pagamento) ?>,
+            formatter: function (y) { return y+" %"},
+            colors: ['#C36E82', '#6E5A7D', '#375A7D','#79BD8F']
+        });
+    }
+
+    return {
+        // public functions
+        init: function() {
+
+            faturamento_mensal();
+            vendas_forma_pagamento();
+        }
+    };
+}();
+
+$(document).ready(function() {
+    KMorrisCharts.init();
+});
+
+
+</script>

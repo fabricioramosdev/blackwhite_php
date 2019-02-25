@@ -77,11 +77,11 @@ var KDashboard = function() {
                     mode: 'nearest',
                     bodySpacing: 5,
                     yPadding: 10,
-                    xPadding: 10, 
+                    xPadding: 10,
                     caretPadding: 0,
                     displayColors: false,
                     backgroundColor: KApp.getStateColor('brand'),
-                    titleFontColor: '#ffffff', 
+                    titleFontColor: '#ffffff',
                     cornerRadius: 4,
                     footerSpacing: 0,
                     titleSpacing: 0
@@ -152,7 +152,7 @@ var KDashboard = function() {
             chart.update();
         });
     }
-    
+
     var widgetTechnologiesChart = function() {
         if ($('#k_widget_technologies_chart').length == 0) {
             return;
@@ -203,11 +203,11 @@ var KDashboard = function() {
                     mode: 'nearest',
                     bodySpacing: 5,
                     yPadding: 10,
-                    xPadding: 10, 
+                    xPadding: 10,
                     caretPadding: 0,
                     displayColors: false,
                     backgroundColor: KApp.getStateColor('brand'),
-                    titleFontColor: '#ffffff', 
+                    titleFontColor: '#ffffff',
                     cornerRadius: 4,
                     footerSpacing: 0,
                     titleSpacing: 0
@@ -235,16 +235,16 @@ var KDashboard = function() {
                     data: [
                         35, 30, 35
                     ],
-                    backgroundColor: [                                                                 
-                        KApp.getStateColor('warning'),                   
-                        KApp.getStateColor('brand'),                         
-                        KApp.getStateColor('success') 
+                    backgroundColor: [
+                        KApp.getStateColor('warning'),
+                        KApp.getStateColor('brand'),
+                        KApp.getStateColor('success')
                     ]
                 }],
-                labels: [       
-                    'CSS',     
-                    'Angular',               
-                    'HTML'    
+                labels: [
+                    'CSS',
+                    'Angular',
+                    'HTML'
                 ]
             },
             options: {
@@ -269,11 +269,11 @@ var KDashboard = function() {
                     mode: 'nearest',
                     bodySpacing: 5,
                     yPadding: 10,
-                    xPadding: 10, 
+                    xPadding: 10,
                     caretPadding: 0,
                     displayColors: false,
                     backgroundColor: KApp.getStateColor('brand'),
-                    titleFontColor: '#ffffff', 
+                    titleFontColor: '#ffffff',
                     cornerRadius: 4,
                     footerSpacing: 0,
                     titleSpacing: 0
@@ -326,11 +326,11 @@ var KDashboard = function() {
                     mode: 'nearest',
                     bodySpacing: 5,
                     yPadding: 10,
-                    xPadding: 10, 
+                    xPadding: 10,
                     caretPadding: 0,
                     displayColors: false,
                     backgroundColor: KApp.getStateColor('brand'),
-                    titleFontColor: '#ffffff', 
+                    titleFontColor: '#ffffff',
                     cornerRadius: 4,
                     footerSpacing: 0,
                     titleSpacing: 0
@@ -443,11 +443,11 @@ var KDashboard = function() {
                     mode: 'nearest',
                     bodySpacing: 5,
                     yPadding: 10,
-                    xPadding: 10, 
+                    xPadding: 10,
                     caretPadding: 0,
                     displayColors: false,
                     backgroundColor: KApp.getStateColor('brand'),
-                    titleFontColor: '#ffffff', 
+                    titleFontColor: '#ffffff',
                     cornerRadius: 4,
                     footerSpacing: 0,
                     titleSpacing: 0
@@ -587,7 +587,7 @@ var KDashboard = function() {
                             zeroLineBorderDash: [3, 4]
                         },
                         ticks: {
-                            max: 70,                            
+                            max: 70,
                             stepSize: 10,
                             display: true,
                             beginAtZero: true,
@@ -609,11 +609,11 @@ var KDashboard = function() {
                     mode: 'nearest',
                     bodySpacing: 5,
                     yPadding: 10,
-                    xPadding: 10, 
+                    xPadding: 10,
                     caretPadding: 0,
                     displayColors: false,
                     backgroundColor: KApp.getStateColor('brand'),
-                    titleFontColor: '#ffffff', 
+                    titleFontColor: '#ffffff',
                     cornerRadius: 4,
                     footerSpacing: 0,
                     titleSpacing: 0
@@ -696,7 +696,7 @@ var KDashboard = function() {
                             zeroLineBorderDash: [3, 4]
                         },
                         ticks: {
-                            max: 100,                            
+                            max: 100,
                             stepSize: 20,
                             display: true,
                             beginAtZero: true,
@@ -716,8 +716,8 @@ var KDashboard = function() {
                     line: {
                         tension: 0.5
                     },
-                    point: { 
-                        radius: 0 
+                    point: {
+                        radius: 0
                     }
                 },
                 tooltips: {
@@ -726,11 +726,11 @@ var KDashboard = function() {
                     mode: 'nearest',
                     bodySpacing: 5,
                     yPadding: 10,
-                    xPadding: 10, 
+                    xPadding: 10,
                     caretPadding: 0,
                     displayColors: false,
                     backgroundColor: KApp.getStateColor('brand'),
-                    titleFontColor: '#ffffff', 
+                    titleFontColor: '#ffffff',
                     cornerRadius: 4,
                     footerSpacing: 0,
                     titleSpacing: 0
@@ -968,6 +968,6 @@ var KDashboard = function() {
 }();
 
 // Class initialization
-jQuery(document).ready(function() {
+$(document).ready(function() {
     KDashboard.init();
 });
