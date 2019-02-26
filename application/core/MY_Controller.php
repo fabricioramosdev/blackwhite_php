@@ -18,6 +18,7 @@ class MY_Controller extends CI_Controller {
             redirect(base_url());
         } else {
 
+
           $this->data['title'] = 'Black and White Style | ';
 
           $controller = $this->router->class;

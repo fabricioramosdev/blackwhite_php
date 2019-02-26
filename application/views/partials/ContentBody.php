@@ -3,7 +3,7 @@
 <!-- begin::Dashboard-->
   <?php
     if( $this->router->class == 'App'){
-      $this->view('partials/Dashboard');
+      $this->view("partials/Dashboard_{$this->session->usuario[0]['descperfil']}");
     }
     ?>
 <!--end::Dashboard-->

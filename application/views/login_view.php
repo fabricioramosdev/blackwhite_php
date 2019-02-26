@@ -164,11 +164,11 @@ License: You must have a valid license purchased only from https://themes.getboo
 									</div>
 
 								<!--begin::Action-->
-							 <div class="k-login-v1__body-action">
+							 <div class="">
 								<!--	<a href="#" class="k-link">
 										<span>Forgot Password ?</span>
 									</a> -->
-									<button type="submit" class="btn btn-pill btn-elevate ">Login </button>
+									<button type="submit" class="btn btn-success btn-success btn-block">Acessar sistema </button>
 								</div>
 								<!--end::Action-->
 								</form>
