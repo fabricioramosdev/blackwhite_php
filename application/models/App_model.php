@@ -19,38 +19,56 @@ class App_model extends MY_Model {
   public function vendas_semana(){
 
 
-      $result = $this->db->query("SELECT sum(venda_total) as vendas_semana, WEEK(now())+1 as semana FROM venda WHERE WEEK(registro) = WEEK(now()) ;")->result_array();
-      return $result;
+    $result = $this->db->query("SELECT sum(venda_total) as vendas_semana, WEEK(now())+1 as semana FROM venda WHERE WEEK(registro) = WEEK(now()) ;")->result_array();
+    return $result;
 
   }
 
 
-public function vendas_atradas(){
-  $result = $this->db->query("SELECT sum( valor_parcela) as total_vencida  FROM venda_prazo WHERE data_parcela < current_date() AND status = 1;")->result_array();
-  return $result;
-}
+  public function vendas_atradas(){
+    $result = $this->db->query("SELECT sum( valor_parcela) as total_vencida  FROM venda_prazo WHERE data_parcela < current_date() AND status = 1;")->result_array();
+    return $result;
+  }
 
 
-public function chart_faturamento_mensal(){
+  public function chart_faturamento_mensal(){
 
-  $result = $this->db->query("SELECT sum( venda_total)  as a,  date_format(registro,'%m/%y')  as y  FROM venda WHERE date_format(registro,'%Y') =  date_format(now(),'%Y')  GROUP BY   date_format(registro,'%m') ORDER BY y")->result_array();
-  return $result;
+    $result = $this->db->query("SELECT sum( venda_total)  as a,  date_format(registro,'%m/%y')  as y  FROM venda WHERE date_format(registro,'%Y') =  date_format(now(),'%Y')  GROUP BY   date_format(registro,'%m') ORDER BY y")->result_array();
+    return $result;
 
-}
+  }
 
 
-public function chart_vendas_forma_pagamento(){
+  public function chart_vendas_forma_pagamento(){
 
-  $result = $this->db->query("SELECT pagamento_descricao  as label , format(count(1) / total.cnt*100,2) as value
-FROM  venda
-CROSS
-  JOIN (SELECT COUNT(1) AS cnt FROM venda cnt WHERE pagamento_id is not null
-AND date_format(registro,'%Y') =  date_format(now(),'%Y')  ) total
-WHERE pagamento_id is not null
-AND date_format(registro,'%Y') =  date_format(now(),'%Y')
-GROUP BY pagamento_id;")->result_array();
-  return $result;
+    $result = $this->db->query("SELECT pagamento_descricao  as label , format(count(1) / total.cnt*100,2) as value
+    FROM  venda
+    CROSS
+    JOIN (SELECT COUNT(1) AS cnt FROM venda cnt WHERE pagamento_id is not null
+    AND date_format(registro,'%Y') =  date_format(now(),'%Y')  ) total
+    WHERE pagamento_id is not null
+    AND date_format(registro,'%Y') =  date_format(now(),'%Y')
+    GROUP BY pagamento_id;")->result_array();
+    return $result;
 
-}
+  }
+
+
+  public function curva_abc_produtos(){
+
+    $result = $this->db->query("SELECT format(count(1)/total.cnt*100,2) as a ,produto_codigo as y
+    FROM venda_itens
+    CROSS
+    JOIN (SELECT COUNT(1) AS cnt FROM venda_itens cnt) as total
+    GROUP BY produto_codigo ORDER BY a DESC limit 10;")->result_array();
+    return $result;
+  }
+
+
+  public function aniversariantes_mes(){
+    $result = $this->db->query("SELECT nome,telCel, whatsapp, telOut, date_format(datanasc,'%d/%m/%Y') as datanasc FROM cliente WHERE date_format(datanasc,'%m') =  date_format(now(),'%m')  AND datanasc is not null ;")->result_array();
+    return $result;
+
+  }
 
 }

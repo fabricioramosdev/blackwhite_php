@@ -163,8 +163,6 @@ class Venda extends MY_Controller {
 
 		$venda = $this->Venda_model->pdf_venda($id);
 
-
-
 		$this->load->library('Pdf_Libary');
 		$hash = md5($venda[0]['id']);
 		$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);

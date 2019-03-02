@@ -64,8 +64,6 @@ License: You must have a valid license purchased only from https://themes.getboo
 															<div class="k-portlet__head-label">
 																<h3 class="k-portlet__head-title">Lista de clientes</h3>
 															</div>
-
-
 														</div>
 
                         		<div class="k-portlet__body">
@@ -76,8 +74,6 @@ License: You must have a valid license purchased only from https://themes.getboo
                             </div>
                             <!-- ================================================= -->
 
-                
-
                             <!--begin: Datatable -->
                             <table class="table table-striped- table-bordered table-hover table-checkable" id="k_table_1">
                               <thead>
@@ -86,7 +82,7 @@ License: You must have a valid license purchased only from https://themes.getboo
                                   <th>Nome</th>
                                   <th>CPF</th>
                                   <th>Tel.Cel</th>
-                                  <th>Status</th>
+                                  <th>Atraso</th>
                                   <th></th>
                                 </tr>
                               </thead>
@@ -210,7 +206,8 @@ License: You must have a valid license purchased only from https://themes.getboo
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a class="dropdown-item" href="<?php echo base_url(); ?>Cliente/edit/${full[0]}"><i class="la la-edit"></i>Editar Cliente</a>
-                                    <a class="dropdown-item" href="javascript:;"  onClick="view(${full[0]},'Cliente/view')"><i class="la la-search"></i>Ver Cliente</a>
+                                    <a class="dropdown-item" href="javascript:;"  onClick="view(${full[0]},'Cliente/view')"><i class="la la-search"></i>Mais Detalhes</a>
+                                      <a class="dropdown-item" href="<?php echo base_url() ?>Crediario/crediario_cliente/${full[0]}"><i class="la la-money"></i>Crediário Cliente</a>
                                     <a class="dropdown-item" href="javascript:;"  onClick="deletar(${full[0]},'Cliente/delete')"><i class="la la-trash"></i>Deletar Cliente</a>
                                 </div>
                             </span>

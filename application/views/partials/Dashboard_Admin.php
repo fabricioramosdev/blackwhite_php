@@ -65,7 +65,7 @@
     <!--begin::Portlet-->
     <div class="k-portlet k-portlet--fit k-portlet--height-fluid">
       <div class="k-portlet__body k-portlet__body--fluid">
-        <div class="k-widget-3 k-widget-3--danger">
+        <div class="k-widget-3 k-widget-3--warningr">
           <div class="k-widget-3__content">
             <div class="k-widget-3__content-info">
 
@@ -77,7 +77,7 @@
             <div class="k-widget-3__content-stats">
 
               <div class="k-widget-3__content-action">
-                <div class="k-widget-3__content-text">Parcelas em atraso</div>
+                <div class="k-widget-3__content-text"><a href="<?php echo base_url(); ?>Crediario/atraso"><i class="fa fa-angle-double-right"></i> Parcelas em atraso</a></div>
                 <div class="k-widget-3__content-value"> EM (<?php echo date('d/m/Y') ?>)</div>
               </div>
             </div>

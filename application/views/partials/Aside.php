@@ -6,7 +6,7 @@
   <div class="k-aside__brand	k-grid__item " id="k_aside_brand">
     <div class="k-aside__brand-logo">
       <a href="<?php echo base_url(); ?>App/index">
-        <img  src="<?php echo base_url(); ?>assets/media/logos/logo-1-bw.png" />
+        <img  src="<?php echo base_url(); ?>assets/media/logos/logo-4-bw.png" width="70%" />
       </a>
     </div>
     <div class="k-aside__brand-tools">

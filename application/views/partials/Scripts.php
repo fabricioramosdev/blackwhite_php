@@ -100,6 +100,22 @@ var KMorrisCharts = function() {
     }
 
 
+
+    var curva_abc_produtos = function() {
+        // BAR CHART
+        new Morris.Bar({
+            element: 'k_morris_vendas_produto',
+            data:<?php echo json_encode($chart_curva_abc_produtos) ?>,
+            xkey: 'y',
+            ykeys: ['a'],
+            formatter: function (a) { return a+" %"},
+            labels: ['(%) Representatividade produto nas vendas'],
+            barColors: ['#006BB2']
+        });
+    }
+
+
+
     var vendas_forma_pagamento = function() {
         // PIE CHART
         new Morris.Donut({
@@ -116,6 +132,7 @@ var KMorrisCharts = function() {
 
             faturamento_mensal();
             vendas_forma_pagamento();
+            curva_abc_produtos();
         }
     };
 }();

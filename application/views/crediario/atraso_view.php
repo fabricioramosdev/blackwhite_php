@@ -62,7 +62,7 @@ License: You must have a valid license purchased only from https://themes.getboo
 													<div class="k-portlet">
 														<div class="k-portlet__head">
 															<div class="k-portlet__head-label">
-																<h3 class="k-portlet__head-title">Lista clientes crediário</h3>
+															<h3 class="k-portlet__head-title">Lista clientes atraso</h3>
 															</div>
 
 
@@ -78,23 +78,26 @@ License: You must have a valid license purchased only from https://themes.getboo
                               <table class="table table-striped- table-bordered table-hover table-checkable" id="k_table_1">
                                 <thead>
                                   <tr>
-                                    <th>ID</th>
-                                    <th>Nome</th>
-                                    <th>CPF</th>
+                                    <th>Parcela</th>
+                                    <th>Venda N°</th>
+                                    <th>Data Venc.</th>
+                                    <th>Valor</th>
+                                    <th>Cliente</th>
                                     <th>Tel.Cel</th>
-                                    <th>Status</th>
+                                    <th>Tel.Out</th>
                                     <th></th>
                                   </tr>
                                 </thead>
                                 <tbody>
-                                  <?php foreach ($listaclientes as $key => $value): ?>
+                                  <?php foreach ($listaatraso as $key => $value): ?>
                                     <tr>
-                                      <td><?php echo $value['id'] ?></td>
+                                      <td><a href="<?php echo base_url() ?>Crediario/crediario_cliente/1"><i class="fa fa-angle-double-right"></i> <?php echo $value['parcela'] ?></a></td>
+                                      <td><?php echo $value['venda_id'] ?></td>
+                                      <td><?php echo $value['data_parcela'] ?></td>
+                                      <td><?php echo $value['valor_parcela'] ?></td>
                                       <td><?php echo $value['nome'] ?></td>
-                                      <td><?php echo $value['cpf'] ?></td>
                                       <td><a href="<?php echo $value['whatsapp'] ?>" target="_blank"> <i class="fab fa-whatsapp fa-2x"></i> &nbsp;<?php echo $value['telCel'] ?> </a></td>
-                                        <td><?php echo sizeof($value['atraso'])?></td>
-                                      <td><a  href="<?php echo base_url() ?>Crediario/crediario_cliente/<?php echo $value['id'] ?>" class="btn btn-info"><i class="fa fa-search-dollar"></i>Crediário Cliente</a></td>
+                                      <td><?php echo $value['telOut']?></td>
                                     </tr>
                                   <?php endforeach; ?>
 
