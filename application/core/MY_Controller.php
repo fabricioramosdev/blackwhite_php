@@ -13,6 +13,7 @@ class MY_Controller extends CI_Controller {
         $this->load->helper('url');
         $this->load->helper('date');
         $this->data['appname'] = date('Y')." - &copy;&nbsp; Black and White Style";
+
         //======================= valida se o usuário esta logado.
         if (!$this->session->usuario) {
             redirect(base_url());

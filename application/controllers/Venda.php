@@ -63,6 +63,7 @@ class Venda extends MY_Controller {
 
 		$venda = Array(
 			'usuario_id'=> $this->session->usuario[0]['id'],
+			'loja_id'=> $this->session->usuario[0]['idloja'],
 			'cliente_id' => (isset($venda_cliente->id))?$venda_cliente->id:null,
 			'cliente_nome'=> (isset($venda_cliente->nome))?$venda_cliente->nome:null,
 			'pagamento_id'=>$venda_forma_pagamento->id,

@@ -92,7 +92,13 @@ License: You must have a valid license purchased only from https://themes.getboo
                                     <td><?php echo $value['id'] ?></td>
             												<td><?php echo $value['nome'] ?></td>
             												<td><?php echo $value['cpf'] ?></td>
-                                    <td><a href="<?php echo $value['whatsapp'] ?>" target="_blank"> <i class="fab fa-whatsapp fa-2x"></i> &nbsp;<?php echo $value['telCel'] ?> </a></td>
+                                    <td>
+                                      <?php if($value['telCel'] != ''){ ?>
+                                      <a href="<?php echo $value['whatsapp'] ?>" target="_blank"> <i class="fab fa-whatsapp fa-2x"></i> &nbsp;<?php echo $value['telCel'] ?> </a>
+                                      <?php } ?>
+
+
+                                    </td>
                         						<td><?php echo $value['status'] ?></td>
             												<td nowrap></td>
                                   </tr>
