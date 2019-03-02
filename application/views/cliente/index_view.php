@@ -76,10 +76,7 @@ License: You must have a valid license purchased only from https://themes.getboo
                             </div>
                             <!-- ================================================= -->
 
-                            <!-- =================================================
-                            id, nome, endereco, cpf, telefone, whastapp, email,  observacao, registro, status, hash
-
-                           -->
+                
 
                             <!--begin: Datatable -->
                             <table class="table table-striped- table-bordered table-hover table-checkable" id="k_table_1">

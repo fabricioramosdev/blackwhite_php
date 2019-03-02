@@ -62,56 +62,58 @@ License: You must have a valid license purchased only from https://themes.getboo
 													<div class="k-portlet">
 														<div class="k-portlet__head">
 															<div class="k-portlet__head-label">
-																<h3 class="k-portlet__head-title">Lista clientes crediário</h3>
+																<h3 class="k-portlet__head-title">Parcelas abertas<br> <span class="text-success"><?php echo $listaparcelas[0]['cliente_nome'] ?><span></h3>
 															</div>
-
-
 														</div>
 
                         		<div class="k-portlet__body">
 
                               <!-- ================================================= -->
-
-
-
-                              <!--begin: Datatable -->
-                              <table class="table table-striped- table-bordered table-hover table-checkable" id="k_table_1">
-                                <thead>
-                                  <tr>
-                                    <th>ID</th>
-                                    <th>Nome</th>
-                                    <th>CPF</th>
-                                    <th>Tel.Cel</th>
-
-                                    <th></th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <?php foreach ($listaclientes as $key => $value): ?>
-                                    <tr>
-                                      <td><?php echo $value['id'] ?></td>
-                                      <td><?php echo $value['nome'] ?></td>
-                                      <td><?php echo $value['cpf'] ?></td>
-                                      <td><a href="<?php echo $value['whatsapp'] ?>" target="_blank"> <i class="fab fa-whatsapp fa-2x"></i> &nbsp;<?php echo $value['telCel'] ?> </a></td>
-                                      <td><a  href="<?php echo base_url() ?>Crediario/crediario_cliente/<?php echo $value['id'] ?>" class="btn btn-info"><i class="fa fa-search-dollar"></i>Vendas Cliente</a></td>
-                                    </tr>
-                                  <?php endforeach; ?>
-
-                                </tbody>
-                              </table>
-
-                              <!--end: Datatable -->
-
+                              <div class="row" style="margin-bottom:15px">
+                                <div class="col-sm col-md"><a href="<?php echo base_url(); ?>Crediario/index" class="btn btn-focus btn-wide"><i class="fa fa-undo"></i> Voltar</a></div>
+                              </div>
                               <!-- ================================================= -->
 
+                              <!--begin: Datatable -->
+            									<table class="table table-striped- table-bordered table-hover table-checkable" id="k_table_1">
+            										<thead>
+            											<tr>
+            												<th>ID</th>
+            												<th>Venda</th>
+            												<th>Parcela</th>
+            												<th>Data Venc.</th>
+            												<th>Valor</th>
+            												<th>Status</th>
+            												<th>##</th>
+            											</tr>
+            										</thead>
+            										<tbody>
+                                  <?php foreach ($listaparcelas as $key => $value): ?>
+            											<tr>
+            												<td><?php echo $value['id']; ?></td>
+            												<td><?php echo $value['venda']; ?></td>
+            												<td><?php echo $value['parcela']; ?></td>
+            												<td><?php echo $value['data_parcela']; ?></td>
+            												<td>R$ <?php echo number_format($value['valor_parcela'],2); ?></td>
+                                    <td><?php echo $value['status']; ?></td>
+            												<td nowrap></td>
+            											</tr>
+                                  <?php endforeach; ?>
 
-
-                           </div>
-
-													</div>
-												</div>
-
-												<!--end: Personal Information-->
+            										</tbody>
+            										<tfoot>
+            											<tr>
+                                    <th>ID</th>
+                                    <th>Venda</th>
+                                    <th>Parcela</th>
+                                    <th>Data Venc.</th>
+                                    <th>Valor</th>
+                                    <th>Status</th>
+                                    <th>##</th>
+            											</tr>
+            										</tfoot>
+            									</table>
+												<!--end: Datatable-->
 
 
 											</div>
@@ -186,37 +188,12 @@ License: You must have a valid license purchased only from https://themes.getboo
 
     <!--begin::Page Scripts -->
     <script src="<?php echo base_url(); ?>assets/demo/default/custom/components/forms/widgets/bootstrap-select.js" type="text/javascript"></script>
+    <script src="<?php echo base_url(); ?>assets/demo/default/custom/custom/crediario/crediario.js" type="text/javascript"></script>
+		<script src="<?php echo base_url(); ?>assets/demo/default/custom/components/datatables/extensions/rowgroup.js" type="text/javascript"></script>
     <!--end::Page Scripts -->
+
     <!-- ============================= Script custom da pagina ========================== -->
     <script type="text/javascript">
-
-    var DatatablesBasicPaginations = function() {
-
-    	var initTable = function() {
-    	var table = $('table');
-
-    		// begin first table
-    		table.DataTable({
-    			responsive: true,
-    			pagingType: 'full_numbers',
-
-    		});
-    	};
-
-    	return {
-    		//main function to initiate the module
-    		init: function() {
-    			initTable();
-    		},
-
-    	};
-
-    }();
-
-    jQuery(document).ready(function() {
-    	DatatablesBasicPaginations.init();
-    });
-
 
     </script>
     <!-- ============================= Script custom da pagina ========================== -->

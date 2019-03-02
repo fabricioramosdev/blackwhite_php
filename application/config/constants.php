@@ -92,6 +92,6 @@ define('DEV', $dev);
 define('HOSTNAME', $dev ? 'localhost' : 'localhost');
 define('DATABASE', $dev ? 'bwdev' : 'u447066707_bwdev');
 define('USERNAME', $dev ? 'root' : 'u447066707_bwdev');
-define('PASSWORD', $dev ? 'pri142407' :'pri142407');
+define('PASSWORD', $dev ? '' :'pri142407');
 //========================================= Define a constante BASEURL
 define('BASEURL', $dev ? 'http://localhost/bwdev/' : 'http://u447066707.hostingerapp.com/bwdev/');

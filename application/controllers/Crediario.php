@@ -4,9 +4,8 @@ class Crediario extends MY_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		$this->data['subTitle'] = 'Crediario';
+		$this->data['subTitle'] = 'Crediário';
 		$this->load->library('form_validation');
-		$this->load->model('Cliente_model');
 		$this->load->model('Crediario_model');
 		$this->load->helper('html_util_helper');
 		$this->load->helper('date_helper');
@@ -15,19 +14,22 @@ class Crediario extends MY_Controller {
 	public function index()
 	{
 
-		$this->data['clientes'] = $this->Cliente_model->listaCliente();
+		$this->data['listaclientes'] = $this->Crediario_model->lista_cliente_crediario();
 		$this->load->view('crediario/index_view',$this->data);
 	}
 
-	public function busca_crediario(){
-		$form =  $this->input->post();
 
-		$parcelas = $this->Crediario_model->busca_crediario($form);
-		echo json_encode($parcelas);
+public function crediario_cliente($id =  null){
 
+	if($id != null){
 
+				$this->data['listaparcelas'] = $this->Crediario_model->lista_parcelas_cliente_crediario($id);
+				$this->load->view('crediario/crediario_cliente_view',$this->data);
 
 	}
+
+}
+
 
 
 
