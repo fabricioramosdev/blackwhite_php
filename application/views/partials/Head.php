@@ -72,8 +72,8 @@
   <!--begin::Layout Skins -->
   <link href="<?php echo base_url(); ?>assets/demo/default/skins/header/base/light.css" rel="stylesheet" type="text/css" />
   <link href="<?php echo base_url(); ?>assets/demo/default/skins/header/menu/light.css" rel="stylesheet" type="text/css" />
-  <link href="<?php echo base_url(); ?>assets/demo/default/skins/brand/brand.css" rel="stylesheet" type="text/css" />
-  <link href="<?php echo base_url(); ?>assets/demo/default/skins/aside/brand.css" rel="stylesheet" type="text/css" />
+  <link href="<?php echo base_url(); ?>assets/demo/default/skins/brand/light.css" rel="stylesheet" type="text/css" />
+  <link href="<?php echo base_url(); ?>assets/demo/default/skins/aside/light.css" rel="stylesheet" type="text/css" />
 
   <!--end::Layout Skins -->
   <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/media/logos/favicon.ico" />

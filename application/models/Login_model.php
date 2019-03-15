@@ -31,7 +31,7 @@ class Login_model extends CI_Model {
     WHERE B.aside = 1
     AND A.status = 1
     AND B.status = 1
-    AND  A.perfil = '{$data}' ;")->result_array();
+    AND  A.perfil = '{$data}' ORDER BY  B.label ASC ;")->result_array();
 
 
     return $result;

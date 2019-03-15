@@ -8,6 +8,7 @@ class Produto extends MY_Controller {
 		$this->load->library('form_validation');
 		$this->load->model('Produto_model');
 		$this->load->model('Produto_categoria_model');
+		$this->load->model('Categoria_model');
 		$this->load->helper('html_util_helper');
 		$this->load->helper('date_helper');
 	}
@@ -138,8 +139,6 @@ class Produto extends MY_Controller {
 		echo json_encode($this->Produto_model->checkcodigo($form));
 
 	}
-
-
 
 
 
