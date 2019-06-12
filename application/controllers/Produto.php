@@ -49,7 +49,7 @@ class Produto extends MY_Controller {
 		}else{
 
 
-
+			$form['loja_id'] =  $this->session->usuario[0]['idloja'];
 			$idProduto = $this->Produto_model->post($form);
 
 			// prepara array para dar input do novo produto no estoque

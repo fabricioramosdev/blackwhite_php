@@ -82,7 +82,7 @@ class Venda_model extends MY_Model {
   }
 
   public function pdf_parcelas($data){
-    $result = $this->db->query("SELECT id, cliente_id, parcela, data_parcela, valor_parcela, status, venda_id FROM bwdev.venda_prazo where venda_id = {$data}; ")->result_array();
+    $result = $this->db->query("SELECT id, cliente_id, parcela, data_parcela, valor_parcela, status, venda_id FROM venda_prazo where venda_id = {$data}; ")->result_array();
     return $result;
 
   }

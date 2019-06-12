@@ -25,10 +25,7 @@ class Estoque_model extends MY_Model {
     return $result;
   }
 
-  private function AjustaSaldoProduto($data){
 
-
-  }
 
 
 }
